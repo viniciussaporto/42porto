@@ -6,13 +6,13 @@
 /*   By: vsa-port <vsa-port@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 14:46:26 by vsa-port          #+#    #+#             */
-/*   Updated: 2022/11/07 13:48:40 by vsa-port         ###   ########.fr       */
+/*   Updated: 2022/11/07 16:08:46 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(char *str)
+int	ft_atoi(const char *str)
 {
 	int	i;
 	int	s;
