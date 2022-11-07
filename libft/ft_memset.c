@@ -6,28 +6,30 @@
 /*   By: vsa-port <vsa-port@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 10:00:50 by vsa-port          #+#    #+#             */
-/*   Updated: 2022/11/07 14:45:47 by vsa-port         ###   ########.fr       */
+/*   Updated: 2022/11/07 16:54:17 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 void	*ft_memset(void *b, int c, size_t len)
 {
-	size_t	i;
-	unsigned char	*ptr;
-	
-	ptr = (unsigned char *)b;
+	unsigned char	*p;
+	unsigned char	temp;
+	size_t			i;
+
+	p = (unsigned char *)b;
+	temp = (unsigned char)c;
 	i = 0;
-	while (i < len && ptr[i] != '\0')
+	while (i < len)
 	{
-		ptr[i] = c;
+		p[i] = temp;
 		i++;
 	}
-	return (b);
+	return (p);
 }
 /*
+#include <stdio.h>
 int main ()
 {
 	char s[] =  "fodasscaralhofodassecaralhofodassecaralhofodassefodassecaralhofodassecaralhofodassefodassecaralhofodassecaralhofodasse";
