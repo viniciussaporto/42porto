@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/04 14:59:12 by vsa-port          #+#    #+#             */
-/*   Updated: 2022/11/07 15:50:30 by vsa-port         ###   ########.fr       */
+/*   Created: 2022/11/04 14:57:24 by vsa-port          #+#    #+#             */
+/*   Updated: 2022/11/04 14:58:47 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_putnbr_fd(int n, int fd)
+void ft_putendl_fd(char *s, int fd)
 {
-    
+    ft_putstr_fd(s, fd);
+    ft_putchar_fd('\n', fd);
 }
