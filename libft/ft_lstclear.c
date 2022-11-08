@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vsa-port <vsa-port@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 14:34:15 by vsa-port          #+#    #+#             */
-/*   Updated: 2022/11/07 14:55:39 by vsa-port         ###   ########.fr       */
+/*   Updated: 2022/11/08 17:49:15 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,15 @@
 
 void ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	t_list	*j;
+	t_list	*tmp;
 	
-	j = *lst;
 	if (!lst || !del)
 		return ;
-	while (*lst != NULL)
+	while (*lst)
 	{
-		j = j->next;
-		del((*lst)->content);
-		free(*lst);
-		*lst = j;
+		tmp = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		*lst = tmp;
 	}
 	*lst = NULL;
 }

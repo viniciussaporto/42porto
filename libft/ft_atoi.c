@@ -3,45 +3,52 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vsa-port <vsa-port@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 14:46:26 by vsa-port          #+#    #+#             */
-/*   Updated: 2022/11/07 16:08:46 by vsa-port         ###   ########.fr       */
+/*   Updated: 2022/11/08 18:16:21 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+#include "libft.h"
+
+static int	skiper(const char *str)
 {
 	int	i;
-	int	s;
-	int	res;
 
 	i = 0;
-	s = 1;
-	res = 0;
-	while ((str[i] >= '\t' && str[i] <= '\r') || str[i] == ' ')
+	while (str[i] != '\0' && (str[i] == ' '
+			|| str[i] == '\n'
+			|| str[i] == '\f'
+			|| str[i] == '\r'
+			|| str[i] == '\t'
+			|| str[i] == '\v'))
 		i++;
-	while (str[i] == '-' || str[i] == '+')
+	return (i);
+}
+
+int	ft_atoi(const char *str)
+{
+	int				i;
+	int				n;
+	int				res;
+
+	res = 0;
+	n = 1;
+	i = skiper(str);
+	if (str[i] == '-' || str[i] == '+')
 	{
 		if (str[i] == '-')
-			s *= -1;
+			n = -n;
 		i++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
+	while (str[i] && str[i] >= '0' && str[i] <= '9')
 	{
-		res = res * 10 + str[i] - '0';
+		res *= 10;
+		res += (str[i] - 48);
 		i++;
 	}
-	return (res * s);
+	return (res * n);
 }
-/*#include <stdio.h>
-int	main(void)
-{
-	int	res;
-
-	res = ft_atoi("--+-+--1234");
-	printf("%d\n", res);
-	return (0);
-}*/
