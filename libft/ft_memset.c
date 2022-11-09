@@ -6,7 +6,7 @@
 /*   By: vsa-port <vsa-port@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 10:00:50 by vsa-port          #+#    #+#             */
-/*   Updated: 2022/11/07 16:54:17 by vsa-port         ###   ########.fr       */
+/*   Updated: 2022/11/09 10:41:42 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,3 @@ void	*ft_memset(void *b, int c, size_t len)
 	}
 	return (p);
 }
-/*
-#include <stdio.h>
-int main ()
-{
-	char s[] =  "fodasscaralhofodassecaralhofodassecaralhofodassefodassecaralhofodassecaralhofodassefodassecaralhofodassecaralhofodasse";
-
-	ft_memset(s, 43, 45);
-	printf("%s\n", s);
-}*/

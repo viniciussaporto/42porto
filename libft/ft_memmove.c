@@ -6,7 +6,7 @@
 /*   By: vsa-port <vsa-port@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 10:34:06 by vsa-port          #+#    #+#             */
-/*   Updated: 2022/11/07 17:14:51 by vsa-port         ###   ########.fr       */
+/*   Updated: 2022/11/09 10:42:54 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	*ft_memmove(void *dst, const void *src, size_t n)
 	}
 	else
 	{
-		while(i < n)
+		while (i < n)
 		{
 			((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
 			i++;

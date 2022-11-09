@@ -1,19 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vsa-port <vsa-port@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/03 09:51:16 by vsa-port          #+#    #+#             */
-/*   Updated: 2022/11/09 10:35:12 by vsa-port         ###   ########.fr       */
+/*   Created: 2022/11/07 15:11:08 by vsa-port          #+#    #+#             */
+/*   Updated: 2022/11/09 10:23:35 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalnum(int c)
+#include "libft.h"
+
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	if ((c >= 'A' && c <= 'Z')
-		|| (c >= 'a' && c <= 'z') || (c >= '0' && c <= '9'))
-		return (1);
-	return (0);
+	t_list	*new_lst;
+	t_list	*elem;
+
+	if (!lst)
+		return (0);
+	new_lst = 0;
+	while (lst)
+	{
+		elem = ft_lstnew(f(lst->content));
+		if (!elem)
+		{
+			ft_lstclear(&new_lst, del);
+			return (0);
+		}
+		ft_lstadd_back(&new_lst, elem);
+		lst = lst->next;
+	}
+	return (new_lst);
 }

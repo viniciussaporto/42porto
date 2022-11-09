@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vsa-port <vsa-port@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vsa-port <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/03 09:51:16 by vsa-port          #+#    #+#             */
-/*   Updated: 2022/11/09 10:35:12 by vsa-port         ###   ########.fr       */
+/*   Created: 2022/11/07 11:25:13 by vsa-port          #+#    #+#             */
+/*   Updated: 2022/11/09 10:33:33 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalnum(int c)
+#include "libft.h"
+
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	if ((c >= 'A' && c <= 'Z')
-		|| (c >= 'a' && c <= 'z') || (c >= '0' && c <= '9'))
-		return (1);
-	return (0);
+	if (!new)
+		return ;
+	if (!lst)
+	{
+		*lst = new;
+		return ;
+	}
+	new->next = *lst;
+	*lst = new;
 }

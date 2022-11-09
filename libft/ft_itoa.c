@@ -6,13 +6,13 @@
 /*   By: vsa-port <vsa-port@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 13:21:34 by vsa-port          #+#    #+#             */
-/*   Updated: 2022/11/07 16:16:07 by vsa-port         ###   ########.fr       */
+/*   Updated: 2022/11/09 10:25:54 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_intlen(long number)
+static	int	ft_intlen(long number)
 {
 	int	l;
 	int	is_negative;

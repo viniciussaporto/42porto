@@ -6,13 +6,13 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 14:54:01 by vsa-port          #+#    #+#             */
-/*   Updated: 2022/11/08 18:01:53 by vsa-port         ###   ########.fr       */
+/*   Updated: 2022/11/09 10:21:09 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_putchar_fd(char c, int fd)
+void	ft_putchar_fd(char c, int fd)
 {
-    write(fd, &c, 1);
+	write(fd, &c, 1);
 }

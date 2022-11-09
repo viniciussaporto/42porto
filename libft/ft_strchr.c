@@ -6,13 +6,13 @@
 /*   By: vsa-port <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 11:32:51 by vsa-port          #+#    #+#             */
-/*   Updated: 2022/11/03 11:43:25 by vsa-port         ###   ########.fr       */
+/*   Updated: 2022/11/09 10:31:43 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char *ft_strchr(const char *src, int c)
+char	*ft_strchr(const char *src, int c)
 {
 	while (*src != '\0' && c != *src)
 		src++;

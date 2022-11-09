@@ -6,14 +6,14 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 14:57:24 by vsa-port          #+#    #+#             */
-/*   Updated: 2022/11/04 14:58:47 by vsa-port         ###   ########.fr       */
+/*   Updated: 2022/11/09 10:27:54 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_putendl_fd(char *s, int fd)
+void	ft_putendl_fd(char *s, int fd)
 {
-    ft_putstr_fd(s, fd);
-    ft_putchar_fd('\n', fd);
+	ft_putstr_fd(s, fd);
+	ft_putchar_fd('\n', fd);
 }

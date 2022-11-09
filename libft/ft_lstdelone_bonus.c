@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vsa-port <vsa-port@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/03 09:51:16 by vsa-port          #+#    #+#             */
-/*   Updated: 2022/11/09 10:35:12 by vsa-port         ###   ########.fr       */
+/*   Created: 2022/11/07 14:07:33 by vsa-port          #+#    #+#             */
+/*   Updated: 2022/11/09 10:20:15 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalnum(int c)
+#include "libft.h"
+
+void	del(void *ptr)
 {
-	if ((c >= 'A' && c <= 'Z')
-		|| (c >= 'a' && c <= 'z') || (c >= '0' && c <= '9'))
-		return (1);
-	return (0);
+	free(ptr);
+}
+
+void	ft_lstdelone(t_list *lst, void (*del)(void*))
+{
+	if (!lst || !del)
+		return ;
+	del(lst->content);
+	free(lst);
 }

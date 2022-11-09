@@ -6,15 +6,15 @@
 /*   By: vsa-port <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 11:31:03 by vsa-port          #+#    #+#             */
-/*   Updated: 2022/11/03 11:32:21 by vsa-port         ###   ########.fr       */
+/*   Updated: 2022/11/09 10:43:48 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int     ft_tolower(int c)
+int	ft_tolower(int c)
 {
-        if (c >= 'A' && c <= 'Z')
-                return (c + ('a' - 'A'));
-        return (c);
+	if (c >= 'A' && c <= 'Z')
+		return (c + ('a' - 'A'));
+	return (c);
 }

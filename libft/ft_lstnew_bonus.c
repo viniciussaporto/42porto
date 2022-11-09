@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vsa-port <vsa-port@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vsa-port <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/03 09:51:16 by vsa-port          #+#    #+#             */
-/*   Updated: 2022/11/09 10:35:12 by vsa-port         ###   ########.fr       */
+/*   Created: 2022/11/07 10:55:45 by vsa-port          #+#    #+#             */
+/*   Updated: 2022/11/09 10:40:28 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalnum(int c)
+#include "libft.h"
+
+t_list	*ft_lstnew(void *content)
 {
-	if ((c >= 'A' && c <= 'Z')
-		|| (c >= 'a' && c <= 'z') || (c >= '0' && c <= '9'))
-		return (1);
-	return (0);
+	t_list	*new;
+
+	new = (t_list *)malloc(sizeof(t_list));
+	if (!new)
+		return (0);
+	new->content = content;
+	new->next = NULL;
+	return (new);
 }

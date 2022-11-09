@@ -6,15 +6,15 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 09:58:13 by vsa-port          #+#    #+#             */
-/*   Updated: 2022/11/08 18:01:59 by vsa-port         ###   ########.fr       */
+/*   Updated: 2022/11/09 10:24:56 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t ft_strlen(const char *s)
+size_t	ft_strlen(const char *s)
 {
-	size_t len;
+	size_t	len;
 
 	len = 0;
 	while (s[len] != 0)
