@@ -6,7 +6,7 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 13:07:43 by vsa-port          #+#    #+#             */
-/*   Updated: 2022/11/11 17:10:55 by vsa-port         ###   ########.fr       */
+/*   Updated: 2022/11/11 17:58:36 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,15 +58,17 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	head->next = dois;
 	head->next->next = tres;
 
-	printf("All Numbers %s %s %s %p", (char *)head->content, (char *)head->next->content,
-									(char *)head->next->next->content,
-									head->next->next->next);
+	printf("All Numbers %s %s %s %p", (char *)head->content, 
+	(char *)head->next->content,
+	(char *)head->next->next->content,
+	head->next->next->next);
 
 	ft_lstadd_back(&head, quatro);
 
-	printf("\nAll Numbers %s %s %s %s %p", (char *)head->content, (char *)head->next->content,
-										(char *)head->next->next->content,
-										(char *)head->next->next->next->content,
-										head->next->next->next->next);
+	printf("\nAll Numbers %s %s %s %s %p", (char *)head->content, 
+	(char *)head->next->content,
+	(char *)head->next->next->content,
+	(char *)head->next->next->next->content,
+	head->next->next->next->next);
 	return(0);
 }*/
