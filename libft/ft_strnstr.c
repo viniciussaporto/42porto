@@ -6,34 +6,32 @@
 /*   By: vsa-port <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 18:17:33 by vsa-port          #+#    #+#             */
-/*   Updated: 2022/11/09 10:21:41 by vsa-port         ###   ########.fr       */
+/*   Updated: 2022/11/14 18:28:10 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *s1, const char *s2, size_t len)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	size_t	c;
-	size_t	d;
+	size_t	i;
+	size_t	j;
 
-	c = 0;
-	d = 0;
-	if (s2[c] == '\0')
-		return ((char *)s1);
+	i = 0;
+	if (little[i] == '\0')
+		return ((char *)big);
 	if (len == 0)
 		return (NULL);
-	while (c <= len)
+	while (big[i] != '\0' && i < len)
 	{
-		if (s2[d] == '\0')
-			return ((char *)(&s1[c - d]));
-		if (s1[c] == s2[d])
-			d++;
-		else
-			d = 0;
-		if (s1[c] == '\0')
-			break ;
-		c++;
+		j = 0;
+		while (little[j] == big[j + i] && i + j < len)
+		{
+			if (little[j + 1] == '\0')
+				return ((char *)big + i);
+			j++;
+		}
+		i++;
 	}
 	return (NULL);
 }
