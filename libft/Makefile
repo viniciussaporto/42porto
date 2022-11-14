@@ -6,7 +6,7 @@
 #    By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 19:03:30 by vsa-port          #+#    #+#              #
-#    Updated: 2022/11/14 19:14:46 by vsa-port         ###   ########.fr        #
+#    Updated: 2022/11/14 20:02:12 by vsa-port         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,13 +34,13 @@ BONUS_O	= $(BONUS_S:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) $(INCLUDE)
 	ar -rcs $(NAME) $(OBJS)
 
 $(OBJS): $(SRCS)
 	$(CC) $(CFLAGS) $(SRCS)
 
-bonus: $(NAME) $(BONUS_O)
+bonus: $(NAME) $(BONUS_O) $(INCLUDE)
 	ar -rcs $(NAME) $(BONUS_O)
 
 $(BONUS_O): $(BONUS_S)
