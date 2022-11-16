@@ -6,7 +6,7 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 11:58:49 by vsa-port          #+#    #+#             */
-/*   Updated: 2022/11/16 22:05:37 by vsa-port         ###   ########.fr       */
+/*   Updated: 2022/11/16 22:24:38 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,6 @@ char	*get_next_line(int fd)
 	if (!buffer)
 		return (NULL);
 	line = ft_line(buffer);
-	buffer = ft_next(buffer);
+	buffer = ft_next_line(buffer);
 	return (line);
 }

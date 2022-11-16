@@ -6,7 +6,7 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 12:27:20 by vsa-port          #+#    #+#             */
-/*   Updated: 2022/11/16 15:04:38 by vsa-port         ###   ########.fr       */
+/*   Updated: 2022/11/16 22:25:25 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		return (NULL);
 	while (s1[i] != 0)
 	{
-		res[i] = s1[j];
+		res[i] = s1[i];
 		i++;
 	}
 	j = 0;
