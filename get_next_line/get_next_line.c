@@ -6,7 +6,7 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 11:58:49 by vsa-port          #+#    #+#             */
-/*   Updated: 2022/11/16 13:09:09 by vsa-port         ###   ########.fr       */
+/*   Updated: 2022/11/16 22:02:31 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ char	*ft_line(char *buffer)
 
 	i = 0;
 	//if no line exists return null
-	if (buffer[i])
+	if (!buffer[i])
 		return (NULL);
 	//takes index to end of line
 	while (buffer[i] && buffer[i] != '\n')
