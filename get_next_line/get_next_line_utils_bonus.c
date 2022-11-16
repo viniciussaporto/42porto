@@ -6,11 +6,11 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 12:27:20 by vsa-port          #+#    #+#             */
-/*   Updated: 2022/11/16 13:09:27 by vsa-port         ###   ########.fr       */
+/*   Updated: 2022/11/16 15:04:38 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {

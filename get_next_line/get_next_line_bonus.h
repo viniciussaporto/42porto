@@ -6,12 +6,12 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 11:52:45 by vsa-port          #+#    #+#             */
-/*   Updated: 2022/11/16 13:09:38 by vsa-port         ###   ########.fr       */
+/*   Updated: 2022/11/16 15:04:26 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 # include <stdlib.h>
 # include <sys/types.h>
 # include <sys/uio.h>

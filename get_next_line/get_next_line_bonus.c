@@ -6,11 +6,11 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 11:58:49 by vsa-port          #+#    #+#             */
-/*   Updated: 2022/11/16 13:09:43 by vsa-port         ###   ########.fr       */
+/*   Updated: 2022/11/16 15:04:09 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 //join strings and frees memory allocated during buffer expansion
 char	*ft_free(char *buffer, char *buf)
