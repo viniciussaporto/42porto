@@ -6,7 +6,7 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 11:58:49 by vsa-port          #+#    #+#             */
-/*   Updated: 2022/11/16 22:24:38 by vsa-port         ###   ########.fr       */
+/*   Updated: 2022/11/18 09:14:08 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,13 +108,29 @@ char	*read_file(int fd, char *res)
 	return (res);
 }
 
-char	*get_next_line(int fd)
+// char	*get_next_line(int fd)
+// {
+// 	static char	*buffer[4096];
+// 	char	*line;
+
+// 	//handles invalid entries
+// 	if (fd < 0 || fd > 4095 || BUFFER_SIZE <= 0 /*|| read(fd, 0, 0) < 0*/)
+// 		return (NULL);
+// 	buffer[fd] = read_file(fd, buffer[fd]);
+// 	if (!buffer[fd])
+// 		return (NULL);
+// 	line = ft_line(buffer[fd]);
+// 	buffer[fd] = ft_next_line(buffer[fd]);
+// 	return (line);
+// }
+
+char	*get_next_line(int fd)		/*vectorial*/
 {
 	static char	*buffer;
 	char	*line;
 
 	//handles invalid entries
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, NULL, 0) < 0)
 		return (NULL);
 	buffer = read_file(fd, buffer);
 	if (!buffer)
@@ -123,3 +139,29 @@ char	*get_next_line(int fd)
 	buffer = ft_next_line(buffer);
 	return (line);
 }
+
+/*
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <stdio.h>
+#include <fcntl.h>
+
+int main()
+{
+    int fd;
+    char *ptr;
+    fd = open("bonus2testfile10", O_RDONLY);
+    if (fd == -1)
+    {
+        printf("error opening file\n");
+        return (1);
+    }
+    ptr = get_next_line(fd);
+    printf("final: %s\n", ptr);
+    free(ptr);
+    ptr = get_next_line(fd);
+    printf("final: %s\n", ptr);
+    free(ptr);
+    close(fd);
+    return (0);
+}*/
