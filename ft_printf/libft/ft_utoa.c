@@ -1,63 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_utoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 22:13:18 by vsa-port          #+#    #+#             */
-/*   Updated: 2022/11/22 22:42:38 by vsa-port         ###   ########.fr       */
+/*   Created: 2022/11/24 03:08:45 by vsa-port          #+#    #+#             */
+/*   Updated: 2022/11/24 03:15:34 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
 #include "libft.h"
-#include <stdlib.h>
 
-void	ft_putstr(char *str)
+static int	num_len(unsigned int);
+
+char	*ft_utoa(unsigned int n)
 {
 	int	i;
+	unsigned int	aux;
+	char	*ptr;
 
-	i = 0;
-	while (str[i])
+	i = num_len(n);
+	aux = n;
+	ptr = (char *)malloc(sizeof(char) * (i + 1));
+	if (!ptr)
+		return (NULL);
+	ptr[i] = '\0';
+	if (aux == 0)
+		ptr[0] = '0';
+	ptr[i--] = '\0';
+	while (aux)
 	{
-		write(1, &str[i], 1);
-		i++;
+		ptr[i--] = (aux % 10) + '0';
+		aux /= 10;
 	}
+	return (ptr);
 }
 
-int	ft_printstr(char *str)
+static int	num_len(unsigned int n)
 {
-	int	i;
-
-	i = 0;
-	if (str == NULL)
-	{
-		ft_putstr("(null)");
-		return (6);
-	}
-	while (str[i])
-	{
-		write(1, &str[i], 1);
-		i++;
-	}
-	return (i);
-}
-
-int	ft_printnbr(int n)
-{
-	int		len;
-	char	*nb;
+	int	len;
 
 	len = 0;
-	nb = ft_itoa(n);
-	len = ft_printstr(nb);
-	free(nb);
+	if (n <= 0)
+		len++;
+	while (n)
+	{
+		len++;
+		n /= 10;
+	}
 	return (len);
-}
-
-int	ft_printpercent(void)
-{
-	write(1, "%", 1);
-	return (1);
 }
