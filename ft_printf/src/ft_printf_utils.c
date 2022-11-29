@@ -6,11 +6,11 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 03:35:35 by vsa-port          #+#    #+#             */
-/*   Updated: 2022/11/24 03:40:24 by vsa-port         ###   ########.fr       */
+/*   Updated: 2022/11/29 07:25:33 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libftprintf.h"
+#include "../include/ft_printf.h"
 
 int	ft_putchar(char c)
 {

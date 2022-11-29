@@ -5,58 +5,41 @@
 #                                                     +:+ +:+         +:+      #
 #    By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/11/24 03:59:17 by vsa-port          #+#    #+#              #
-#    Updated: 2022/11/24 04:15:29 by vsa-port         ###   ########.fr        #
+#    Created: 2022/11/24 14:12:05 by vsa-port          #+#    #+#              #
+#    Updated: 2022/11/29 07:26:28 by vsa-port         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= libftprintf.a
+NAME	= ft_printf.a
 
-INCLUDE	= ./include
-SRC	= ./src
-
-CFLAGS	= -Wall -Wextra -Werror -g -I./include
 CC	= gcc
-FLAGLIB	= -rcs
-RM	= /bin/rm/ -f
 
-LIBFT_DIR	= ./libft
-LIBFT	= ./libft/libft.a
+CFLAGS	= -Wall -Werror -Wextra
 
-FT_PRINTF	= ft_printf_utils.c ft_putpointer.c puthex.c ft_printf.c
-OBJECTS	= $(FT_PRINTF:.c=.o)
+RM	= rm -rf
 
-all:	$(NAME)
+SRCS	= ft_printf.c \
+	src/ft_printf_utils.c \
+	src/ft_putpointer.c \
+	src/puthex.c \
+
+OBJS	= $(SRCS:.c=.o)
+
+OBJSBONUS	= $(BONUS:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(OBJECTS)
-	@echo "Starting compilation of: $(NAME)"
-	@cp $(LIBFT) $(NAME)
-	@ar $(FLAGLIB) $(NAME) $(OBJECTS)
-	@ranlib $(NAME)
-	@echo "Done!"
-	
-$(LIBFT): $(LIBFT_DIR)
-	@echo "Compiling libft!"
-	@$(MAKE) -C $(LIBFT_DIR)
-	@echo "libft compiled!"
-
-%.o: $(SRC)/%.c
-	@$(CC) $(CFLAGS) -c $< -o $@
-	@echo "Compiling $<"
+$(NAME): $(OBJS)
+	$(MAKE) -C ./libft
+	cp libft/libft.a $(NAME)
+	ar rcs $(NAME) $(OBJS)
 
 clean:
-	@$(MAKE) clean -C $(LIBFT_DIR)
-	@$(RM) $(OBJECTS)
-	@echo "clean done!"
+	$(MAKE) clean -C ./libft
+	$(RM) $(OBJS) $(OBJSBONUS)
 
-fclean:	clean
-	@$(MAKE) fclean -C $(LIBFT_DIR)
-	@$(RM) $(NAME)
-	@echo "fclean done!"
+fclean: clean
+	$(MAKE) clean -C ./libft
+	$(RM) $(NAME)
 
 re: fclean all
-	@echo "Rebuilding done!"
-
-.PHONY: all re clean fclean
