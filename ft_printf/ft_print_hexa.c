@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_print_hexa.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 10:55:45 by vsa-port          #+#    #+#             */
-/*   Updated: 2022/11/11 17:11:32 by vsa-port         ###   ########.fr       */
+/*   Created: 2022/12/12 11:08:24 by vsa-port          #+#    #+#             */
+/*   Updated: 2022/12/12 11:37:39 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-t_list	*ft_lstnew(void *content)
+int	ft_print_hexa(unsigned long num, char c)
 {
-	t_list	*new;
+	int	count;
+	char	*base;
 
-	new = (t_list *)malloc(sizeof(t_list));
-	if (!new)
-		return (0);
-	new->content = content;
-	new->next = NULL;
-	return (new);
+	count = 0;
+	if (c == 'x')
+		base = "0123456789abcdef";
+	if (c == 'X')
+		base = "0123456789ABCDEF";
+	if (num < 16)
+		count += ft_print_char(*(base + num));
+	if (num >= 16)
+	{
+		count += ft_print_hexa(num / 16, c);
+		count += ft_print_hexa(num % 16, c);
+	}
+	return (count);
 }
-
-/*int		main()
-{
-	char	str[] = "lorem ipsum dolor sit";
-	t_list	*elem;
-
-	elem = ft_lstnew((void *)str);
-	printf("\n%s\n", (char *)elem->content);
-}*/

@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_print_unsigned.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vsa-port <vsa-port@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/03 13:46:32 by vsa-port          #+#    #+#             */
-/*   Updated: 2022/11/09 10:43:19 by vsa-port         ###   ########.fr       */
+/*   Created: 2022/12/12 11:20:17 by vsa-port          #+#    #+#             */
+/*   Updated: 2022/12/12 11:37:41 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+int	ft_print_unsigned(unsigned int num)
 {
-	size_t	i;
+	int	count;
 
-	i = 0;
-	while (i < n)
+	count = 0;
+	if (num < 10)
+		count += ft_print_char(num + '0');
+	if (num >= 10)
 	{
-		if (((unsigned char *)s)[i] == (unsigned char)c)
-			return ((void *)(s + i));
-		i++;
+		count += ft_print_unsigned(num / 10);
+		count += ft_print_unsigned(num % 10);
 	}
-	return (0);
+	return (count);
 }

@@ -5,60 +5,65 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 22:12:41 by vsa-port          #+#    #+#             */
-/*   Updated: 2022/11/29 07:25:47 by vsa-port         ###   ########.fr       */
+/*   Created: 2022/12/12 11:38:53 by vsa-port          #+#    #+#             */
+/*   Updated: 2022/12/12 11:38:55 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/ft_printf.h"
+#include "ft_printf.h"
 
-int	ft_print_arg(const char *fmt, int i, va_list ap);
+int	ft_check_specifier(char c, va_list args)
+
+{
+	int	byte_count;
+
+	byte_count = 0;
+	if (c == 'c')
+		byte_count = ft_print_char(va_arg(args, int));
+	else if (c == '%')
+		byte_count = write(1, "%", 1);
+	else if (c == 's')
+		byte_count = ft_print_string(va_arg(args, char *));
+	else if (c == 'd' || c == 'i')
+		byte_count = ft_print_numbs(va_arg(args, int));
+	else if (c == 'u')
+		byte_count = ft_print_unsigned(va_arg(args, unsigned int));
+	else if (c == 'X' || c == 'x')
+		byte_count = ft_print_hexa(va_arg(args, unsigned int), c);
+	else if (c == 'p')
+		byte_count = ft_print_address(va_arg(args, unsigned long));
+	return (byte_count);
+}
 
 int	ft_printf(const char *format, ...)
-{
-	va_list	ap;
-	int	i;
-	int	ret;
 
+{
+	va_list		args;
+	int			byte_count;
+	int			i;
+
+	va_start(args, format);
+	byte_count = 0;
 	i = 0;
-	ret = 0;
-	va_start(ap, format);
-	while (format[i])
+	while (*(format + i) != '\0')
 	{
-		if (format[i] == '%' && ft_strchr("cspdiuxX%", format[i + 1]))
-		{
-			ret += ft_print_arg(format, i, ap);
-			i++;
-		}
+		if (*(format + i) != '%')
+			byte_count += write(1, (format + i), 1);
 		else
-			ret += ft_putchar(format[i]);
+		{
+			i++;
+			byte_count += ft_check_specifier(*(format + i), args);
+		}
 		i++;
 	}
-	va_end(ap);
-	return (ret);
+	va_end(args);
+	return (byte_count);
 }
 
-int	ft_print_arg(const char *fmt, int i, va_list ap)
+/* int	main()
+
 {
-	if (fmt[i + 1] == '%')
-		return (ft_putchar(fmt[i + 1]));
-	else if (fmt[i + 1] == 'c')
-		return (ft_putchar(va_arg(ap, int)));
-	else if (fmt[i + 1] == 's')
-		return (ft_putstr(va_arg(ap, char *)));
-	else if (fmt [i + 1] == 'd' || fmt[i + 1] == 'i')
-		return (ft_putnbr(va_arg(ap, int)));
-	else if (fmt[i + 1] == 'u')
-		return (putnbr_u(va_arg(ap, unsigned int)));
-	else if (fmt[i + 1] == 'x' || fmt[i + 1] == 'X')
-	{
-		if (fmt[i + 1] == 'X')
-			return (put_hex(va_arg(ap, unsigned int), "1234567890ABCDEF"));
-		else
-			return (put_hex(va_arg(ap, unsigned int), "1234567890abcdef"));
-	}
-	else if (fmt[i + 1] == 'p')
-		return (ft_putstr("0x") + put_pointer(va_arg(ap, void *), "1234567890abcdef"));
-	else
-		return (0);
-}
+
+	ft_printf("%p", 683);
+	return(0);
+} */

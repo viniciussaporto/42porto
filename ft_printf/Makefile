@@ -5,41 +5,43 @@
 #                                                     +:+ +:+         +:+      #
 #    By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/11/24 14:12:05 by vsa-port          #+#    #+#              #
-#    Updated: 2022/11/29 07:26:28 by vsa-port         ###   ########.fr        #
+#    Created: 2022/12/12 11:23:03 by vsa-port          #+#    #+#              #
+#    Updated: 2022/12/12 11:59:27 by vsa-port         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= ft_printf.a
+NAME = libftprintf.a
 
-CC	= gcc
+CC = cc
 
-CFLAGS	= -Wall -Werror -Wextra
+CFLAGS = -Wall -Wextra -Werror
 
-RM	= rm -rf
+SRC = ft_printf.c \
+	ft_print_address.c \
+	ft_print_char.c \
+	ft_print_hexa.c \
+	ft_print_numbs.c \
+	ft_print_string.c \
+	ft_print_unsigned.c
 
-SRCS	= ft_printf.c \
-	src/ft_printf_utils.c \
-	src/ft_putpointer.c \
-	src/puthex.c \
+OBJ = $(SRC:.c=.o)
 
-OBJS	= $(SRCS:.c=.o)
-
-OBJSBONUS	= $(BONUS:.c=.o)
+RM = rm -rf
 
 all: $(NAME)
+	@echo "make all built!"
 
-$(NAME): $(OBJS)
-	$(MAKE) -C ./libft
-	cp libft/libft.a $(NAME)
-	ar rcs $(NAME) $(OBJS)
+$(NAME): $(OBJ)
+	@ar rcs $(NAME) $(OBJ)
 
 clean:
-	$(MAKE) clean -C ./libft
-	$(RM) $(OBJS) $(OBJSBONUS)
+	@$(RM) $(OBJ)
+	@rm -f *.a
+	@echo "clean done!"
 
 fclean: clean
-	$(MAKE) clean -C ./libft
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
+	@echo "fclean done!"
 
 re: fclean all
+	@echo "rebuild done!"

@@ -1,18 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_print_string.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vsa-port <vsa-port@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/03 09:12:33 by vsa-port          #+#    #+#             */
-/*   Updated: 2022/11/07 15:20:19 by vsa-port         ###   ########.fr       */
+/*   Created: 2022/12/12 11:16:46 by vsa-port          #+#    #+#             */
+/*   Updated: 2022/12/12 11:37:40 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalpha(int c)
+#include "ft_printf.h"
+
+int	ft_print_string(char *str)
 {
-	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
-		return (1);
-	return (0);
+	int	count;
+
+	count = 0;
+	if (!str)
+		return (write(1, "(null)", 6));
+	while (*(str + count))
+	{
+		write(1, (str + count), 1);
+		count++;
+	}
+	return (count);
 }
