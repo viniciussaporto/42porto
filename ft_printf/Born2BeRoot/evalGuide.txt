@@ -1,0 +1,129 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    evalGuide.txt                                      :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/12/13 14:14:14 by vsa-port          #+#    #+#              #
+#    Updated: 2022/12/13 15:54:37 by vsa-port         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+evalGuide - vsa-port
+
+General knowledge and choices
+
+1.0 - Why Debian?
+
+It's a very easy to install and setup, already comer with pre-installed packages
+which make it a lot quicker than CentOS (RIP) or Rocky.
+
+1.1 - What is a VM (Virtual Machine)?
+
+A VM is a computing resource that uses software to "emulate" a computer and OS.
+Each VM uses it's own OS and functions completely separate from other VM's, even
+if they're running in the same hardware. It's a great tool to test, prototype and
+run separate functions, containers, etc., because it isolates itself, making it
+easier to debug and correct general problems.
+
+1.2 - What is it's purpose?
+
+See above.
+
+1.3 - How does it work?
+
+It works through virtualization technology, it's able to simulate hardware, like, 
+processor cores and threads, RAM memory, network adapters and disk space.
+
+1.4 - What's the difference between aptitude and apt?
+
+Aptitude is a high-level package manager (as in, works more on the surface of the OS), 
+while apt is a low-level package manager, that many high-level package managers use.
+
+1.5 - What is AppArmor?
+
+AppArmor (Application Armor), is a Linux kernel security module that allow sysadmins to
+restrict permissions for programs on a app-by-app basis.
+
+1.6 - What is SSH?
+
+SSH (Security Shell) is a network protocol that enables users to access a computer over
+unsecure networks securely.
+
+Things to test
+
+2.0 - Create a new user:
+
+You have to create a new user here.
+$ sudo adduser username				<- creating new user (yes (no))
+$ sudo chage -l username				<- Verify password expire info for new user
+$ sudo adduser username sudo
+$ sudo adduser username user42		<- assign new user to sudo and user42 groups
+
+2.1 - How my monitoring.sh script works:
+
+uname -a -> gets all architecture information, PC name, and etc.
+grep -> searches for patterns specified by user
+uniq -> removes duplicates
+wc -l -> word count, gives the number of words
+free -m -> shows info abou ram usage (pram does the percentage of ram in use by the vm)
+df -> gives disk usage info (flags -B for block size and -g or -m for human readable inputs, for mb, gb etc.)
+awk -> permits the use of variables, function, strings, logical operators and etc withou compiling a program
+cut -c -> cuts only the characters passed as arguments
+xargs -> finds all arguments and does something to them (in this case awk and printf)
+top -bnl -> part of the procps command, shows active proccesses in the system (-b only sends output, -n shows number of proccesses running, -l shows uptime and average load info)
+who -b -> shows info about logge in users(-b for last system boot)
+lsblk -> shows list of partitions in disk (then lvmu reports if LVMGroup is in use)
+ss -ta -> show address and ports being used in the moment(-t for all TCP and -a for all sockets)
+users -> shows how many instances of the users are in use(wc -w prints word count)
+hostname -> gives hostname info(-I show local IP address)
+ip link show -> show MAC address (using grep to "filtrate")
+journalctl _COMM=sudo -> show how many proccesses are running with sudo permissions and counts them
+
+2.2 - What to check?
+
+1) lsblk                              1 <- Check partitions
+2) sudo aa-status                     2 <- AppArmor status
+3) getent group sudo                  3 <- sudo group users
+4) getent group user42                4 <- user42 group users
+5) sudo service ssh status            5 <- ssh status, yep
+6) sudo ufw status                    6 <- ufw status
+7) ssh username@ipadress -p 4242      7 <- connect to VM from your host (physical) machine via SSH
+8) nano /etc/sudoers.d/<filename>     8 <- yes, sudo config file. You can $ ls /etc/sudoers.d first
+9) nano /etc/login.defs               9 <- password expire policy
+10) nano /etc/pam.d/common-password  10 <- password policy
+11) sudo crontab -l                  11 <- cron schedule
+
+How to change hostname?
+[$sudo nano /etc/hostname]
+
+Where is sudo logs in /var/log/sudo?
+[$cd /var/log/sudo/00/00 && ls]
+You will see a lot of directories with names like 01 2B 9S 4D etc. They contain the logs we need.
+[$ sudo apt update]
+[$ ls]
+Now you see that we have a new directory here.
+[$ cd <nameofnewdirectory> && ls]
+[$ cat log] <- Input log
+[$ cat ttyout] <- Output log
+
+How to add and remove port 8080 in UFW?
+[$ sudo ufw allow 8080] <- allow
+[$ sudo ufw status] <- check
+[$ sudo ufw deny 8080] <- deny (yes yes)
+
+How to run script every 30 seconds?
+[$ sudo crontab -e]
+Remove or commit previous cron "schedule" and add next lines in crontab file
+|*************************************************|
+| */1 * * * * /path/to/monitoring.sh              |
+| */1 * * * * sleep 30s && /path/to/monitoring.sh |
+|*************************************************|
+To stop script running on boot you just need to remove or commit
+|********************************|
+| @reboot /path/to/monitoring.sh |
+|********************************|
+line in crontab file.
+
+FI.
