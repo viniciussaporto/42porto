@@ -6,13 +6,13 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 11:13:11 by vsa-port          #+#    #+#             */
-/*   Updated: 2022/12/12 11:37:40 by vsa-port         ###   ########.fr       */
+/*   Updated: 2022/12/12 13:47:30 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_print_numbs(long num)
+int	ft_print_numbs(long num) // Standard atoi with long int
 {
 	int	count;
 	char *base;

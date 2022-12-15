@@ -6,13 +6,13 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 11:16:46 by vsa-port          #+#    #+#             */
-/*   Updated: 2022/12/12 11:37:40 by vsa-port         ###   ########.fr       */
+/*   Updated: 2022/12/12 13:49:31 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_print_string(char *str)
+int	ft_print_string(char *str) // Standart print string
 {
 	int	count;
 

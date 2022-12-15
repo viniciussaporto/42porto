@@ -6,13 +6,13 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 11:20:17 by vsa-port          #+#    #+#             */
-/*   Updated: 2022/12/12 11:37:41 by vsa-port         ###   ########.fr       */
+/*   Updated: 2022/12/12 13:49:42 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_print_unsigned(unsigned int num)
+int	ft_print_unsigned(unsigned int num) // Prints unsigned ints
 {
 	int	count;
 

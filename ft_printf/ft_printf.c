@@ -6,12 +6,14 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 11:38:53 by vsa-port          #+#    #+#             */
-/*   Updated: 2022/12/12 11:38:55 by vsa-port         ###   ########.fr       */
+/*   Updated: 2022/12/12 13:26:01 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+/*		Parsing function that takes argument passed by the call
+	to determine which value to print */
 int	ft_check_specifier(char c, va_list args)
 
 {
@@ -39,12 +41,13 @@ int	ft_printf(const char *format, ...)
 
 {
 	va_list		args;
-	int			byte_count;
+	int			byte_count; //Counts characters/intergers/bytes to be passed
 	int			i;
-
+	// Starts variadic arguments list
 	va_start(args, format);
 	byte_count = 0;
 	i = 0;
+	/* This loop determines the type of the next argument for parsing */
 	while (*(format + i) != '\0')
 	{
 		if (*(format + i) != '%')
@@ -56,8 +59,8 @@ int	ft_printf(const char *format, ...)
 		}
 		i++;
 	}
-	va_end(args);
-	return (byte_count);
+	va_end(args); // Closes list (per function rules)
+	return (byte_count); // Return value provided by function calls in this function
 }
 
 /* int	main()
