@@ -6,7 +6,7 @@
 #    By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/13 14:14:14 by vsa-port          #+#    #+#              #
-#    Updated: 2022/12/13 15:54:37 by vsa-port         ###   ########.fr        #
+#    Updated: 2022/12/15 14:57:13 by vsa-port         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,10 +46,14 @@ while apt is a low-level package manager, that many high-level package managers 
 AppArmor (Application Armor), is a Linux kernel security module that allow sysadmins to
 restrict permissions for programs on a app-by-app basis.
 
+run: sudo apparmor_status
+
 1.6 - What is SSH?
 
 SSH (Security Shell) is a network protocol that enables users to access a computer over
 unsecure networks securely.
+
+run: ps aux | grep sshd
 
 Things to test
 
@@ -88,7 +92,7 @@ journalctl _COMM=sudo -> show how many proccesses are running with sudo permissi
 3) getent group sudo                  3 <- sudo group users
 4) getent group user42                4 <- user42 group users
 5) sudo service ssh status            5 <- ssh status, yep
-6) sudo ufw status                    6 <- ufw status
+6) sudo ufw status                    6 <- ufw status to see which services are using which ports use: sudo netstat -tulpn
 7) ssh username@ipadress -p 4242      7 <- connect to VM from your host (physical) machine via SSH
 8) nano /etc/sudoers.d/<filename>     8 <- yes, sudo config file. You can $ ls /etc/sudoers.d first
 9) nano /etc/login.defs               9 <- password expire policy
