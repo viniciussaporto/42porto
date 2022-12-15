@@ -6,7 +6,7 @@
 #    By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/13 14:14:14 by vsa-port          #+#    #+#              #
-#    Updated: 2022/12/15 14:57:13 by vsa-port         ###   ########.fr        #
+#    Updated: 2022/12/15 16:11:13 by vsa-port         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -98,6 +98,7 @@ journalctl _COMM=sudo -> show how many proccesses are running with sudo permissi
 9) nano /etc/login.defs               9 <- password expire policy
 10) nano /etc/pam.d/common-password  10 <- password policy
 11) sudo crontab -l                  11 <- cron schedule
+12) sudo systemctl list-units --type=service --state=running
 
 How to change hostname?
 [$sudo nano /etc/hostname]
@@ -116,6 +117,11 @@ How to add and remove port 8080 in UFW?
 [$ sudo ufw allow 8080] <- allow
 [$ sudo ufw status] <- check
 [$ sudo ufw deny 8080] <- deny (yes yes)
+
+- or -
+
+sudo ufw numbered
+sudo ufw delete <number>
 
 How to run script every 30 seconds?
 [$ sudo crontab -e]
