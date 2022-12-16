@@ -6,7 +6,7 @@
 #    By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/13 14:14:14 by vsa-port          #+#    #+#              #
-#    Updated: 2022/12/15 16:11:13 by vsa-port         ###   ########.fr        #
+#    Updated: 2022/12/16 14:13:13 by vsa-port         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,7 +76,8 @@ df -> gives disk usage info (flags -B for block size and -g or -m for human read
 awk -> permits the use of variables, function, strings, logical operators and etc withou compiling a program
 cut -c -> cuts only the characters passed as arguments
 xargs -> finds all arguments and does something to them (in this case awk and printf)
-top -bnl -> part of the procps command, shows active proccesses in the system (-b only sends output, -n shows number of proccesses running, -l shows uptime and average load info)
+top -bnl -> part of the procps command, shows active proccesses in the system 
+			(-b only sends output, -n shows number of proccesses running, -l shows uptime and average load info)
 who -b -> shows info about logge in users(-b for last system boot)
 lsblk -> shows list of partitions in disk (then lvmu reports if LVMGroup is in use)
 ss -ta -> show address and ports being used in the moment(-t for all TCP and -a for all sockets)
