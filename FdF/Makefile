@@ -52,8 +52,8 @@ LIBPF_PATH	:= $(LIBDIR)/ft_printf
 include $(LIBPF_PATH)/include.mk
 
 # Mini Lib X
-LIB_LINK	+=	-Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o
-LIB_INC		+=	-I /usr/local/include
+LIB_LINK	+=	-Lmlx_linux -lmlx_Linux -L /usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o
+LIB_INC		+=	-I /usr/include
 
 # Lib math
 LIB_LINK	+=	-lm
