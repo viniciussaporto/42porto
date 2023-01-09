@@ -13,6 +13,7 @@ SRC		=					\
 	fade.c					\
 	color.c					\
 	screen/draw.c			\
+	screen/mlx.c			\
 	screen/draw_line.c		\
 	screen/put_pixel.c		\
 	proj/draw_fdf.c			\
