@@ -6,7 +6,7 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 09:28:53 by vsa-port          #+#    #+#             */
-/*   Updated: 2023/01/09 11:01:41 by vsa-port         ###   ########.fr       */
+/*   Updated: 2023/01/09 11:34:23 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,13 +134,11 @@ double			fpart(double x);
 /*
 ** color
 */
-void			get_next_colorcheme(t_disp *disp);
+void			get_next_colorscheme(t_disp *disp);
 
 /*
 ** fade
 */
-unsigned int	knife_fade(int h);
-unsigned int	minecraft_fade(int h);
-unsigned int	white_on_black(int h);
+unsigned int	green_fade(int h);
 
 #endif
