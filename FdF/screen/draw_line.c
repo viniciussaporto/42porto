@@ -6,7 +6,7 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:57:07 by vsa-port          #+#    #+#             */
-/*   Updated: 2023/01/09 10:57:09 by vsa-port         ###   ########.fr       */
+/*   Updated: 2023/01/09 11:03:59 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void		fdf_swap(int *a, int *b)
 	*b = c;
 }
 
-static int		what_color_is_my_stupid_pixel(t_pixel *p1, t_pixel *p2, int mod)
+static int		what_color_is_pixel(t_pixel *p1, t_pixel *p2, int mod)
 {
 	t_vec2	r;
 	t_vec2	g;
@@ -66,7 +66,7 @@ static void		drawline(int steep, t_mlx *mlx, t_pixel *p1, t_pixel *p2)
 		? (double)(p2->y - p1->y) / (double)(p2->x - p1->x) : 1;
 	while (x < p2->x)
 	{
-		color = what_color_is_my_stupid_pixel(p1, p2, x - p1->x);
+		color = what_color_is_pixel(p1, p2, x - p1->x);
 		if (steep)
 		{
 			plot(mlx, (t_pixel){(int)y - 1, x, color}, fpart(y));
