@@ -52,7 +52,7 @@ LIBPF_PATH	:= $(LIBDIR)/ft_printf
 include $(LIBPF_PATH)/include.mk
 
 # Mini Lib X
-LIB_LINK	+=	-L /usr/local/lib/ -lmlx -framework OpenGL -framework AppKit
+LIB_LINK	+=	-Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o
 LIB_INC		+=	-I /usr/local/include
 
 # Lib math
