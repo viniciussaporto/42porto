@@ -6,7 +6,7 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 23:01:06 by vsa-port          #+#    #+#             */
-/*   Updated: 2022/11/15 14:24:58 by vsa-port         ###   ########.fr       */
+/*   Updated: 2023/01/09 17:13:30 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,9 @@ void	ft_lstdelone(t_list *lst, void (*del)(void*));
 void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+double	ft_abs_d(double x);
+double	ft_max_double(double x, double y);
+void	ft_realloc(char **str, size_t str_len, size_t *str_cap);
+char	*get_next_line(int fd);
 
 #endif
