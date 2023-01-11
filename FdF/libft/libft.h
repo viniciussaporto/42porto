@@ -6,13 +6,15 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 23:01:06 by vsa-port          #+#    #+#             */
-/*   Updated: 2023/01/09 17:13:30 by vsa-port         ###   ########.fr       */
+/*   Updated: 2023/01/11 11:32:55 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
-
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1024
+# endif
 # include <stdlib.h>
 # include <unistd.h>
 
@@ -21,6 +23,18 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }	t_list;
+
+typedef struct s_file
+{
+	int				fd;
+	char			rb_ar[BUFFER_SIZE];
+	char			*str;
+	ssize_t			rb_size;
+	size_t			rb_pos;
+	size_t			str_cap;
+	size_t			str_len;
+	struct s_file	*next;
+}				t_file;
 
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);

@@ -6,11 +6,11 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 17:11:09 by vsa-port          #+#    #+#             */
-/*   Updated: 2023/01/09 17:11:11 by vsa-port         ###   ########.fr       */
+/*   Updated: 2023/01/11 11:32:14 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
 static t_file	*init_file(int fd, t_file **file);
 static t_file	*check_file(int fd, t_file **file);

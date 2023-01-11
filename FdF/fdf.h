@@ -6,15 +6,15 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 17:00:06 by vsa-port          #+#    #+#             */
-/*   Updated: 2023/01/09 17:00:08 by vsa-port         ###   ########.fr       */
+/*   Updated: 2023/01/11 10:57:25 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 # include <fcntl.h>
-# include "libft.h"
-# include "mlx.h"
+# include "libft/libft.h"
+# include "mlx_linux/mlx.h"
 
 typedef struct s_fdf
 {

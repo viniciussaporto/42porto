@@ -6,67 +6,110 @@
 #    By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/09 17:02:50 by vsa-port          #+#    #+#              #
-#    Updated: 2023/01/09 17:02:55 by vsa-port         ###   ########.fr        #
+#    Updated: 2023/01/11 13:04:46 by vsa-port         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# Manual for Makefile
-# https://www.gnu.org/software/make/manual/html_node/index.html
-NAME = fdf
+NAME	=	fdf
 
-SRC = main.c draw.c init_data.c key_and_mouse_controls.c
+CC	=	cc
 
-OBJDIR = ./obj/
-OBJ = $(addprefix $(OBJDIR),$(SRC:.c=.o))
-D_FILES = $(addprefix $(OBJDIR),$(SRC:.c=.d))
-CC ?= gcc -Wall -Werror -Wextra
-DEBUG = -g
-OPTIMIZATION = -O2
-LIB += -lmlx
-LIB += -lft
-LIB += -lXext #X11 miscellaneous extensions library
-LIB += -lX11 #Core X11 protocol client library
-LIB += -lm #standard C library of basic mathematical functions
-LIB += -lz #libz - compression/decompression library
-LIBPATH += -L./libraries/mlx_linux
-LIBPATH += -L./libraries/libft
-LIBINC += -I./libraries/mlx_linux/
-LIBINC += -I./libraries/libft/
+CFLAGS	=	-Wall -Werror -Wextra -g
+MLXFLAGS	=	-L ./mlx_linux -lmlx -Ilmlx -lXext -lX11
+LIBFT	=	./libft/libft.a
+PRINTF	=	./ft_printf/libftprintf.a
 
-all : $(NAME)
+SRC = main.c \
+	draw.c \
+	init_data.c \
+	key_and_mouse_controls.c \
 
-$(NAME): obj $(OBJ)
-	make -C ./libraries/libft/
-	make -C ./libraries/mlx_linux/
-	$(CC) $(OBJ) $(LIBPATH) $(LIB) $(LIBINC)  -o $(NAME)
+all:	$(NAME)
 
-obj:
-	mkdir -p $(OBJDIR)
+$(NAME):	$(OBJ)
+	$(MAKE) --no-print-directory -C ./libft
+	echo "LIBFT DONE!💻📚"
+	$(MAKE) --no-print-directory -C ./ft_printf
+	echo "FT_PRINTF DONE!💻🖨"
+	$(MAKE) --no-print-directory -C ./mlx_linux
+	echo "MiniLibX DONE!💻🕹"
+	$(CC) $(CFLAGS) -lm $(SRC) $(LIBFT) $(PRINTF) $(MLXFLAGS) -o $(NAME)
+	echo "FdF READY!💻📈"
 
-$(OBJ): $(OBJDIR)%.o : %.c fdf.h
-	$(CC) $(DEBUG) $(OPTIMIZATION) $(LIBINC) -c $< -o $@ -MMD
-
-include $(wildcard $(D_FILES))
-
-bonus: all
-
-norm:
-	norminette $(SRC)
-
-# rule for the cleaning
 clean:
-	make clean -C ./libraries/libft
-	make clean -C ./libraries/mlx_linux
-	rm -rf $(OBJDIR)
+	$(MAKE) clean -C ./libft
+	$(MAKE) clean -C ./ft_printf
+	rm -rf $(NAME)
+	echo "OBJECTS DELETED!"
 
 fclean:
-	make fclean -C ./libraries/libft
-	make clean -C ./libraries/mlx_linux
-	rm -rf $(OBJDIR)
-	rm -f $(NAME)
+	$(MAKE) fclean -C ./libft
+	$(MAKE) fclean -C ./ft_printf
+	rm -rf $(NAME)
+	echo "$(NAME) DELETED!"
 
-# rule for rebuild a project
 re: fclean all
 
-# directory exceptions
-.PHONY: all clean fclean norm re bonus
+.PHONY: all, clean, fclean, re, bonus
+
+# NAME = fdf
+
+# SRC = main.c \
+# 	draw.c \
+# 	init_data.c \
+# 	key_and_mouse_controls.c \
+
+# OBJDIR = ./obj/
+# OBJ = $(addprefix $(OBJDIR),$(SRC:.c=.o))
+# D_FILES = $(addprefix $(OBJDIR),$(SRC:.c=.d))
+# CC ?= gcc -Wall -Werror -Wextra
+# DEBUG = -g
+# OPTIMIZATION = -O2
+# LIB += -lmlx
+# LIB += -lft
+# LIB += -lXext #X11 miscellaneous extensions library
+# LIB += -lX11 #Core X11 protocol client library
+# LIB += -lm #standard C library of basic mathematical functions
+# LIB += -lz #libz - compression/decompression library
+# LIBPATH += -L./libraries/mlx_linux
+# LIBPATH += -L./libraries/libft
+# LIBINC += -I./libraries/mlx_linux/
+# LIBINC += -I./libraries/libft/
+
+# all : $(NAME)
+
+# $(NAME): obj $(OBJ)
+# 	make -C ./libraries/libft/
+# 	make -C ./libraries/mlx_linux/
+# 	$(CC) $(OBJ) $(LIBPATH) $(LIB) $(LIBINC)  -o $(NAME)
+
+# obj:
+# 	mkdir -p $(OBJDIR)
+
+# $(OBJ): $(OBJDIR)%.o : %.c fdf.h
+# 	$(CC) $(DEBUG) $(OPTIMIZATION) $(LIBINC) -c $< -o $@ -MMD
+
+# include $(wildcard $(D_FILES))
+
+# bonus: all
+
+# norm:
+# 	norminette $(SRC)
+
+# # rule for the cleaning
+# clean:
+# 	make clean -C ./libraries/libft
+# 	make clean -C ./libraries/mlx_linux
+# 	rm -rf $(OBJDIR)
+
+# fclean:
+# 	make fclean -C ./libraries/libft
+# 	make clean -C ./libraries/mlx_linux
+# 	rm -rf $(OBJDIR)
+# 	rm -f $(NAME)
+
+# # rule for rebuild a project
+# re: fclean all
+
+# # directory exceptions
+# .PHONY: all clean fclean norm re bonus
