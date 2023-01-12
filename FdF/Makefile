@@ -6,7 +6,7 @@
 #    By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/09 17:02:50 by vsa-port          #+#    #+#              #
-#    Updated: 2023/01/11 13:04:46 by vsa-port         ###   ########.fr        #
+#    Updated: 2023/01/12 13:05:27 by vsa-port         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,11 +27,11 @@ SRC = main.c \
 all:	$(NAME)
 
 $(NAME):	$(OBJ)
-	$(MAKE) --no-print-directory -C ./libft
+	$(MAKE) -C ./libft
 	echo "LIBFT DONE!💻📚"
-	$(MAKE) --no-print-directory -C ./ft_printf
+	$(MAKE) -C ./ft_printf
 	echo "FT_PRINTF DONE!💻🖨"
-	$(MAKE) --no-print-directory -C ./mlx_linux
+	$(MAKE) -C ./mlx_linux
 	echo "MiniLibX DONE!💻🕹"
 	$(CC) $(CFLAGS) -lm $(SRC) $(LIBFT) $(PRINTF) $(MLXFLAGS) -o $(NAME)
 	echo "FdF READY!💻📈"
