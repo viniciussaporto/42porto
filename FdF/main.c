@@ -6,7 +6,7 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 17:01:41 by vsa-port          #+#    #+#             */
-/*   Updated: 2023/01/09 17:01:43 by vsa-port         ###   ########.fr       */
+/*   Updated: 2023/01/16 11:46:21 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,9 @@ void	print_menu(t_fdf *data)
 
 	mlx_set_font(data->mlx_ptr, data->win_ptr, \
 	"*-*-*-*-*-*-*-230-*-*-*-*-iso8859-*");
-	menu = "up, down, left, right: move picture";
+	menu = "arrows up, down, left, right: move picture";
 	mlx_string_put(data->mlx_ptr, data->win_ptr, 130, 40, 0xb8a900, menu);
-	menu = "4/6 and 2/8; rotate";
+	menu = "numpad 4 and 6 and 2 and 8; rotate";
 	mlx_string_put(data->mlx_ptr, data->win_ptr, 130, 80, 0xb8a900, menu);
 	menu = "+/-: zoom";
 	mlx_string_put(data->mlx_ptr, data->win_ptr, 130, 120, 0xb8a900, menu);
