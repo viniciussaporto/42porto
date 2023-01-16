@@ -6,7 +6,7 @@
 #    By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/09 17:02:50 by vsa-port          #+#    #+#              #
-#    Updated: 2023/01/15 20:13:24 by vsa-port         ###   ########.fr        #
+#    Updated: 2023/01/16 11:40:58 by vsa-port         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,11 +15,11 @@ NAME	=	fdf
 CC	=	cc
 
 CFLAGS	=	-Wall -Werror -Wextra -g
-MLXFLAGS	=	-L ./mlx_linux -lmlx -Ilmlx -lXext -lX11 -lm
+MLXFLAGS	=	-L ./mlx_linux -lmlx -Ilmlx -lXext -lX11 -lm -lft
 LIBFT	=	./libft/libft.a
 PRINTF	=	./ft_printf/libftprintf.a
 
-LNK  = -L ./libft/ -lft -L ./mlx_linux/ \
+LNK  = -L /libft -L /ft_printf \
 
 SRC = main.c \
 	draw.c \
@@ -29,14 +29,16 @@ SRC = main.c \
 all:	$(NAME)
 
 $(NAME):	$(OBJ)
-	$(MAKE) -C ./libft
-	echo "LIBFT DONE!💻📚"
-	$(MAKE) -C ./ft_printf
-	echo "FT_PRINTF DONE!💻🖨"
-	$(MAKE) -C ./mlx_linux
-	echo "MiniLibX DONE!💻🕹"
-	$(CC) $(CFLAGS) -lm $(SRC) $(LIBFT) $(PRINTF) $(LNK) $(MLXFLAGS) -o $(NAME)
-	echo "FdF READY!💻📈"
+	@$(MAKE) -C ./libft
+	@cp ./libft/libft.a .
+	@echo "LIBFT DONE!💻📚"
+	@$(MAKE) -C ./ft_printf
+	@cp ./ft_printf/libftprintf.a .
+	@echo "FT_PRINTF DONE!💻🖨"
+	@$(MAKE) -C ./mlx_linux
+	@echo "MiniLibX DONE!💻🕹"
+	@$(CC) $(CFLAGS) -lm $(SRC) $(LIBFT) $(PRINTF) $(LNK) $(MLXFLAGS) -o $(NAME)
+	@echo "FdF READY!💻📈"
 
 clean:
 	$(MAKE) clean -C ./libft
