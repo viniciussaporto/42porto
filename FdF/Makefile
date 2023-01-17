@@ -6,15 +6,15 @@
 #    By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/09 17:02:50 by vsa-port          #+#    #+#              #
-#    Updated: 2023/01/17 14:56:19 by vsa-port         ###   ########.fr        #
+#    Updated: 2023/01/17 15:52:34 by vsa-port         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	fdf
+NAME	=	fdf.out
 
 CC	=	cc
 
-CFLAGS	=	-Wall -Werror -Wextra -g -nostartfiles
+CFLAGS	=	-Wall -Werror -Wextra -nostartfiles  -g -O0
 MLXFLAGS	=	-Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lz -lm
 #-L ./mlx_linux/ -lmlx -Ilmlx -lXext -lX11
 LIBFT	=	./libft/libft.a
@@ -39,7 +39,7 @@ $(NAME):	$(OBJ)
 	@echo "FT_PRINTF DONE!💻🖨"
 	@$(MAKE) --no-print-directory -C ./mlx_linux
 	@echo "MiniLibX DONE!💻🕹"
-	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(PRINTF) $(MLXFLAGS) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(PRINTF) $(MLXFLAGS) -o $(NAME)
 	@echo "FdF READY!💻📈"
 
 clean:
