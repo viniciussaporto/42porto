@@ -6,7 +6,7 @@
 #    By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/12 11:23:03 by vsa-port          #+#    #+#              #
-#    Updated: 2022/12/14 13:08:26 by vsa-port         ###   ########.fr        #
+#    Updated: 2023/01/17 14:28:08 by vsa-port         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ all: $(NAME)
 	@echo "make all built!"
 
 $(NAME): $(OBJ)
-	@ar rcs $(NAME) $(OBJ)
+	@ar -rcs $(NAME) $(OBJ)
 
 clean:
 	@$(RM) $(OBJ)

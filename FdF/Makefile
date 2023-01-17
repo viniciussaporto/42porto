@@ -6,7 +6,7 @@
 #    By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/09 17:02:50 by vsa-port          #+#    #+#              #
-#    Updated: 2023/01/16 14:59:32 by vsa-port         ###   ########.fr        #
+#    Updated: 2023/01/17 14:56:19 by vsa-port         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME	=	fdf
 
 CC	=	cc
 
-CFLAGS	=	-Wall -Werror -Wextra -g
+CFLAGS	=	-Wall -Werror -Wextra -g -nostartfiles
 MLXFLAGS	=	-Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lz -lm
 #-L ./mlx_linux/ -lmlx -Ilmlx -lXext -lX11
 LIBFT	=	./libft/libft.a
