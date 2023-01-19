@@ -6,7 +6,7 @@
 #    By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/12 11:23:03 by vsa-port          #+#    #+#              #
-#    Updated: 2023/01/17 14:28:08 by vsa-port         ###   ########.fr        #
+#    Updated: 2023/01/19 15:31:46 by vsa-port         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ SRC = ft_printf.c \
 
 OBJ = $(SRC:.c=.o)
 
-RM = rm -rf
+RM = @rm -rf
 
 all: $(NAME)
 	@echo "make all built!"

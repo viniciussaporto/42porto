@@ -6,20 +6,13 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 17:01:41 by vsa-port          #+#    #+#             */
-/*   Updated: 2023/01/16 11:46:21 by vsa-port         ###   ########.fr       */
+/*   Updated: 2023/01/19 14:45:40 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <errno.h>
 #include "fdf.h"
-
-/*
-gcc -Wall -Werror -Wextra
-main.c init_data.c draw.c key_and_mouse_controls.c
--L./libraries/mlx_linux -lmlx -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
--L./libraries/libft -lft
-*/
 
 extern void	init_data(t_fdf *data, char *file_name);
 extern void	draw(t_fdf *data);

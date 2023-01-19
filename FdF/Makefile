@@ -6,7 +6,7 @@
 #    By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/09 17:02:50 by vsa-port          #+#    #+#              #
-#    Updated: 2023/01/17 15:52:34 by vsa-port         ###   ########.fr        #
+#    Updated: 2023/01/19 16:00:28 by vsa-port         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,19 +14,21 @@ NAME	=	fdf.out
 
 CC	=	cc
 
-CFLAGS	=	-Wall -Werror -Wextra -nostartfiles  -g -O0
+CFLAGS	=	-Wall -Werror -Wextra -nostartfiles -g
 MLXFLAGS	=	-Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lz -lm
 #-L ./mlx_linux/ -lmlx -Ilmlx -lXext -lX11
-LIBFT	=	./libft/libft.a
-PRINTF	=	./ft_printf/libftprintf.a
+LIBFT	=	libft.a
+PRINTF	=	libftprintf.a
 
-LNK  = -L /libft -lft -L /ft_printf -lftprintf \
+LNK  = -L/libft -L/ft_printf \
 #libft.a libftprintf.a \
 
 SRC = main.c \
 	draw.c \
 	init_data.c \
 	key_and_mouse_controls.c \
+
+OBJ	=	$(SRC:.c=.o)
 
 all:	$(NAME)
 
@@ -39,20 +41,23 @@ $(NAME):	$(OBJ)
 	@echo "FT_PRINTF DONE!💻🖨"
 	@$(MAKE) --no-print-directory -C ./mlx_linux
 	@echo "MiniLibX DONE!💻🕹"
-	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(PRINTF) $(MLXFLAGS) -o $(NAME)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIBFT) $(PRINTF) $(LNK) $(MLXFLAGS) -lft -lftprintf
 	@echo "FdF READY!💻📈"
 
 clean:
-	$(MAKE) clean -C ./libft
-	$(MAKE) clean -C ./ft_printf
-	rm -rf $(NAME)
-	echo "OBJECTS DELETED!"
+	@$(MAKE) clean -C ./libft
+	@$(MAKE) clean -C ./ft_printf
+	@rm -rf $(NAME)
+	@rm -rf *.o
+	@echo "OBJECTS DELETED!"
 
 fclean:
-	$(MAKE) fclean -C ./libft
-	$(MAKE) fclean -C ./ft_printf
-	rm -rf $(NAME)
-	echo "$(NAME) DELETED!"
+	@$(MAKE) fclean -C ./libft
+	@$(MAKE) fclean -C ./ft_printf
+	@rm -rf $(NAME)
+	@rm -rf *.a
+	@rm -rf *.o
+	@echo "$(NAME) DELETED!"
 
 re: fclean all
 
