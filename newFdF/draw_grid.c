@@ -6,7 +6,7 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 10:54:57 by vsa-port          #+#    #+#             */
-/*   Updated: 2023/01/23 15:15:50 by vsa-port         ###   ########.fr       */
+/*   Updated: 2023/01/24 10:34:57 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,5 +97,21 @@ void	draw_img_grid(t_vars *vars)
 	int	y_new;
 	
 	y = -1;
-	while (++y < vars->)
+	while (++y < vars->nb_lines - 1)
+	{
+		x = 0;
+		while (x < vars->nb_cols)
+		{
+			y_new = vars->nb_lines - 2 - y;
+			if (x < vars->nb_cols - 1)
+				two_points(vars, (vars->point_map)[y_new][x], \
+				(vars->point_map)[y_new][x + 1]);
+			if (y < vars->nb_lines -2)
+				two_points(vars, (vars->point_map)[y_new][x], \
+				(vars->point_map)[y_new - 1][x]);
+			x++;
+		}
+	}
+	mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img, 0 , 0);
+	ft_menu(vars);
 }
