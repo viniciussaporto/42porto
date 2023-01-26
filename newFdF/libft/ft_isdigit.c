@@ -3,16 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vsa-port <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 09:48:27 by vsa-port          #+#    #+#             */
-/*   Updated: 2022/11/03 09:50:59 by vsa-port         ###   ########.fr       */
+/*   Updated: 2023/01/26 16:36:07 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isdigit(int c)
+#include "libft.h"
+
+int	ft_isdigit(int i)
 {
-	if (c >= '0' && c <= '9')
+	if ((i >= '0' && i <= '9'))
 		return (1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 23:01:06 by vsa-port          #+#    #+#             */
-/*   Updated: 2023/01/15 20:03:56 by vsa-port         ###   ########.fr       */
+/*   Updated: 2023/01/26 16:38:34 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ typedef struct s_file
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);
 int		ft_isascii(int c);
-int		ft_isdigit(int c);
+int		ft_isdigit(int i);
 int		ft_isprint(int c);
 size_t	ft_strlen(const char *str);
 void	*ft_memset(void *b, int c, size_t lenen);
@@ -60,7 +60,7 @@ char	*ft_strdup(const char *s1);
 void	*ft_calloc(size_t count, size_t size);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
-char	**ft_split(char const *s, char c);
+char	**ft_split(char const *str, char charset);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, const char *set);
