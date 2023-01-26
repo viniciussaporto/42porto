@@ -6,7 +6,7 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 14:44:17 by vsa-port          #+#    #+#             */
-/*   Updated: 2023/01/20 14:52:07 by vsa-port         ###   ########.fr       */
+/*   Updated: 2023/01/26 16:18:56 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,16 @@
 # include <errno.h>
 # include <string.h>
 # include "libft/libft.h"
-# include "mlx_linux/mlx.h"
+# include "minilibx/mlx.h"
 # include <math.h>
 # include "X11/X.h"
-# include "X11/keysym.h"
+# include "X11/keysymdef.h"
 # include <stdlib.h>
 
 # define WINDOW_WIDTH 1600
 # define WINDOW_HEIGHT 900
 # define MLX_ERROR 1
+# define XK_ESCAPE 27
 
 typedef struct	s_data{
 	void	*img;
@@ -79,7 +80,7 @@ typedef struct s_vars {
 	char		**map_file;
 	t_screen	screen;
 	int			map_number;
-	int			tranform_number;
+	int			transform_number;
 	int			map_option;
 	int			max_maps;
 	int			off_set_change;

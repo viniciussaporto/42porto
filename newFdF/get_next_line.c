@@ -6,7 +6,7 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 10:35:31 by vsa-port          #+#    #+#             */
-/*   Updated: 2023/01/24 10:44:36 by vsa-port         ###   ########.fr       */
+/*   Updated: 2023/01/26 16:07:15 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	int	i;
 	int	j;
 
-	i = 0
+	i = 0;
 	j = -1;
 	size_concat = ft_strlen_nl(s1) + ft_strlen_nl(s2);
 	concat = (char *)malloc(size_concat + 1 * sizeof(char));
@@ -57,6 +57,7 @@ char	*ft_strjoin(char *s1, char *s2)
 
 char	*get_next_line(int fd)
 {
+	static char	buffer[BUFFER_SIZE + 1];
 	char	*line;
 	int	i;
 	int	j;

@@ -6,7 +6,7 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 14:00:18 by vsa-port          #+#    #+#             */
-/*   Updated: 2023/01/20 14:38:06 by vsa-port         ###   ########.fr       */
+/*   Updated: 2023/01/26 16:33:57 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	check_map_digits(int fd, t_vars *vars)
 	line_size = 0;
 	while (line != NULL)
 	{
-		size_col - detect_non_digit(vars, line);
+		size_col = detect_non_digit(vars, line);
 		free(line);
 		line = get_next_line(fd);
 		if (line == NULL && (line_size == 1 || line_size == 2) \

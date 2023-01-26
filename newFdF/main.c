@@ -6,7 +6,7 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 11:42:11 by vsa-port          #+#    #+#             */
-/*   Updated: 2023/01/20 13:59:44 by vsa-port         ###   ########.fr       */
+/*   Updated: 2023/01/26 16:05:52 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	choose_map(t_vars *vars)
 	map_loading(vars, fd, 0);
 	map_to_point(vars);
 	screen_size(vars);
-	if (vars->win);
+	if (vars->win)
 		mlx_destroy_window(vars->mlx, vars->win);
 	if (vars->img.img)
 		mlx_destroy_image(vars->mlx, vars->img.img);

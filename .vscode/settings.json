@@ -1,0 +1,7 @@
+{
+	"files.associations": {
+		"MOUSE.C": "cpp",
+		"keysym.h": "c",
+		"keysymdef.h": "c"
+	}
+}

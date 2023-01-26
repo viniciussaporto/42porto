@@ -6,7 +6,7 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 10:54:57 by vsa-port          #+#    #+#             */
-/*   Updated: 2023/01/24 10:34:57 by vsa-port         ###   ########.fr       */
+/*   Updated: 2023/01/26 16:07:46 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@ t_point	transformations(t_vars *vars, t_point a)
 	a = rotation_y(a, vars);
 	a = rotation_z(a, vars);
 	ft_max_and_min(a.z, vars);
-	if (vars->tranform_number == 1)
+	if (vars->transform_number == 1)
 		a = isometric_projection(a, vars);
-	if (vars->tranform_number == 2)
+	if (vars->transform_number == 2)
 		a = parallel_projection(a, vars);
-	if (vars->tranform_number == 3)
+	if (vars->transform_number == 3)
 		a = top_view(a, vars);
-	if (vars->tranform_number == 4)
+	if (vars->transform_number == 4)
 		a = right_view(a, vars);
-	if (vars->tranform_number == 5)
+	if (vars->transform_number == 5)
 		a = front_view(a, vars);
 	return (a);
 }

@@ -6,7 +6,7 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 14:52:26 by vsa-port          #+#    #+#             */
-/*   Updated: 2023/01/23 10:47:53 by vsa-port         ###   ########.fr       */
+/*   Updated: 2023/01/26 16:08:31 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	create_trgb(int t, int r, int g, int b)
 	return (t << 24 | r << 16 | g << 8 | b);
 }
 
-int	make_color(float perccent, int flag, int r, int g)
+int	make_color(float percent, int flag, int r, int g)
 {
 	if (flag == 0)
 		return (create_trgb(0, 255, 255, 255));

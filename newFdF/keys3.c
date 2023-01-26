@@ -6,7 +6,7 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 11:10:14 by vsa-port          #+#    #+#             */
-/*   Updated: 2023/01/25 11:21:52 by vsa-port         ###   ########.fr       */
+/*   Updated: 2023/01/26 16:33:14 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	handle_projection(int keysym, t_vars *vars)
 {
-	if (keysym == 121 && vars->tranform_number < 5)
-		vars->tranform_number++;
-	else if (keysym == 117 && vars->tranform_number > 1)
-		vars->tranform_number--;
+	if (keysym == 121 && vars->transform_number < 5)
+		vars->transform_number++;
+	else if (keysym == 117 && vars->transform_number > 1)
+		vars->transform_number--;
 	else if (keysym == '3')
 	{
 		vars->map_option = vars->map_option == 0;
@@ -35,7 +35,7 @@ void	handle_z(int keysym, t_vars *vars)
 		vars->z_modify = 100;
 	else if (keysym == 65507)
 		vars->z_modify = 10;
-	else if (keysym = 65505)
+	else if (keysym == 65505)
 		vars->z_modify = 1;
 }
 
@@ -60,7 +60,7 @@ int	change_map(t_vars *vars, int i)
 	vars->map_number = vars->map_number + i;
 	vars->nb_cols = 0;
 	vars->nb_lines = 0;
-	free_maps(vars);
+	free_map(vars);
 	choose_map(vars);
 	return (0);
 }
