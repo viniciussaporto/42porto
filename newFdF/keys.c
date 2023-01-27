@@ -6,7 +6,7 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 11:02:20 by vsa-port          #+#    #+#             */
-/*   Updated: 2023/01/26 16:19:08 by vsa-port         ###   ########.fr       */
+/*   Updated: 2023/01/27 11:49:41 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	handle_part_one(int keysym, t_vars *vars)
 		change_map(vars, -1);
 	else if (keysym == 'r')
 		change_map(vars, 0);
-	else if (keysym == XK_ESCAPE)
+	else if (keysym == ESCAPE)
 		ft_close(vars);
 	else if (keysym == 65363 || keysym == 65361 \
 	|| keysym == 65364 || keysym == 65362)

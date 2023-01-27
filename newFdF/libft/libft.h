@@ -6,7 +6,7 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 23:01:06 by vsa-port          #+#    #+#             */
-/*   Updated: 2023/01/26 16:38:34 by vsa-port         ###   ########.fr       */
+/*   Updated: 2023/01/27 10:54:03 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
+# include <string.h>
 
 typedef struct s_list
 {
@@ -42,6 +43,7 @@ int		ft_isalpha(int c);
 int		ft_isascii(int c);
 int		ft_isdigit(int i);
 int		ft_isprint(int c);
+
 size_t	ft_strlen(const char *str);
 void	*ft_memset(void *b, int c, size_t lenen);
 void	ft_bzero(void *s, size_t n);
@@ -54,7 +56,7 @@ int		ft_tolower(int c);
 void	*ft_memchr(const void *s, int c, size_t n);
 char	*ft_strchr(const char *s, int c);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
-int		ft_atoi(const char *str);
+int		ft_atoi(const char *nptr);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
 char	*ft_strdup(const char *s1);
 void	*ft_calloc(size_t count, size_t size);
@@ -65,6 +67,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, const char *set);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
+
 void	ft_putchar_fd(char c, int fd);
 char	*ft_itoa(int n);
 void	ft_putstr_fd(char *s, int fd);

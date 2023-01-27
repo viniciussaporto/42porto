@@ -6,7 +6,7 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 14:39:28 by vsa-port          #+#    #+#             */
-/*   Updated: 2023/01/20 14:43:54 by vsa-port         ###   ########.fr       */
+/*   Updated: 2023/01/27 11:00:05 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ int	strcmp_fdf(char *a)
 int	counter(char *line)
 {
 	char	**temp;
-	int	i;
-	int	col_size;
+	int		i;
+	int		col_size;
 
 	col_size = 0;
 	i = -1;
@@ -44,7 +44,9 @@ int	counter(char *line)
 	while (temp[col_size])
 		col_size++;
 	while (++i < col_size)
+	{
 		free(temp[i]);
+	}
 	free(temp);
 	return (col_size);
 }

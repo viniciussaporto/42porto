@@ -6,7 +6,7 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 14:44:17 by vsa-port          #+#    #+#             */
-/*   Updated: 2023/01/26 16:18:56 by vsa-port         ###   ########.fr       */
+/*   Updated: 2023/01/27 11:51:03 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # define WINDOW_WIDTH 1600
 # define WINDOW_HEIGHT 900
 # define MLX_ERROR 1
-# define XK_ESCAPE 27
+# define ESCAPE 65307
 
 typedef struct	s_data{
 	void	*img;
