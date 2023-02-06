@@ -6,37 +6,54 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 13:49:13 by vsa-port          #+#    #+#             */
-/*   Updated: 2023/02/06 14:56:17 by vsa-port         ###   ########.fr       */
+/*   Updated: 2023/02/06 17:58:34 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf/ft_printf.h"
+#include "minitalk.h"
 
-void	bit_handling(int bit)
+t_data	g_data;
+
+void	reset_data(void)
 {
-	//int	i;
+	g_data.i = 0;
+	g_data.x = 0;
+	g_data.client_pid = 0;
+}
 
-	//i = 0;
-	g_msg.c += ((bit & 1) << g_msg.i);
-	g_msg.i++;
-	if (g_msg.i == 7)
+void	handler(int sig, siginfo_t *info, void *ucontext)
+{
+	(void)ucontext;
+	sig -= SIGUSR1;
+	if (g_data.client_pid != info->si_pid)
+		reset_data();
+	g_data.x = g_data.x << 1 | sig;
+	g_data.i++;
+	if (g_data.i == 8)
 	{
-		ft_printf("%c", g_msg.c);
-		if (!g_msg.c)
-			ft_printf("\n");
-		g_msg.c = 0;
-		g_msg.i = 0;
+		if (g_data.x == 0)
+			kill(info->si_pid, SIGUSR2);
+		write(1, &g_data.x, 1);
+		reset_data();
 	}
+	g_data.client_pid = info->si_pid;
 }
 
 int	main(void)
 {
-	ft_printf("The server's PID is: %d\n", getpid());
+	struct sigaction	sa;
+
+	reset_data();
+	ft_putstr("PID : ");
+	ft_putnbr(getpid());
+	ft_putstr("\n");
+	sa.sa_sigaction = &handler;
+	sa.sa_flags = SA_SIGINFO;
+	sigemptyset(&sa.sa_mask);
+	sigaddset(&sa.sa_mask, SIGUSR1);
+	sigaddset(&sa.sa_mask, SIGUSR2);
+	sigaction(SIGUSR1, &sa, NULL);
+	sigaction(SIGUSR2, &sa, NULL);
 	while (1)
-	{
-		signal(SIGUSR2, bit_handling);
-		signal(SIGUSR1, bit_handling);
-		pause();
-	}
-	return (0);
+		sleep(1);
 }

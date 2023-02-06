@@ -6,32 +6,47 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 14:35:01 by vsa-port          #+#    #+#             */
-/*   Updated: 2023/02/06 14:39:44 by vsa-port         ###   ########.fr       */
+/*   Updated: 2023/02/06 17:13:50 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf/ft_printf.h"
+#include "minitalk.h"
 
-void	send_bit(int pid, char *str, size_t len)
+void	send_byte(char byte, int pid)
 {
-	int	shift;
-	size_t	i;
-	
-	i = 0;
-	while (i <= len)
+	int	j;
+		
+	j = 7;
+	while (j >= 0)
 	{
-		shift = 0;
-		while (shift < 7)
-		{
-			if ((str[i] >> shift) & 1)
-				kill(pid, SIGUSR2);
-			else
-				kill(pid, SIGUSR1);
-			shift++;
-			usleep(300);
-		}
-		i++;
+		if (byte >> j & 1)
+			kill(pid, SIGUSR2);
+		else
+			kill(pid, SIGUSR1);
+		usleep(500);
+		j--;
 	}
+}
+
+void	send_message(char *str, int pid)
+{
+	int	i;
+
+	i = -1;
+	while (str[++i])
+		send_byte(str[i], pid);
+	send_byte(0, pid);
+}
+
+void	usage(void)
+{
+	ft_putstr("./client [server-pid] [message]\n");
+	exit(0);
+}
+
+void	handler2(int sig)
+{
+	ft_putstr("Message received.");
 }
 
 int	main(int argc, char **argv)
@@ -39,12 +54,11 @@ int	main(int argc, char **argv)
 	int	pid;
 	char	*str;
 	
-	if (argc == 3)
-	{
-		pid = ft_atoi(argv[1]);
-		str = argv[2];
-		send_bit(pid, str, ft_strlen(str));
-	}
-	else
-		ft_printf("\nPlease send an argument\n");
+	signal(SIGUSR2, handler2);
+	if (argc != 3)
+		usage();
+	pid = ft_atoi(argv[1]);
+	str = argv[2];
+	send_message(str, pid);
+	return (0);
 }
