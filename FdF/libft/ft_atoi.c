@@ -6,47 +6,38 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 14:46:26 by vsa-port          #+#    #+#             */
-/*   Updated: 2022/11/11 14:40:55 by vsa-port         ###   ########.fr       */
+/*   Updated: 2023/01/27 10:36:27 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	skiper(const char *str)
+const char	*ft_white_spaces(const char *nptr)
 {
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0' && (str[i] == ' '
-			|| str[i] == '\n'
-			|| str[i] == '\f'
-			|| str[i] == '\r'
-			|| str[i] == '\t'
-			|| str[i] == '\v'))
-		i++;
-	return (i);
+	while (*nptr == 32 || (*nptr >= 9 && *nptr <= 13))
+		nptr++;
+	return (nptr);
 }
 
-int	ft_atoi(const char *str)
+int	ft_atoi(const char *nptr)
 {
-	int				i;
-	int				n;
-	int				res;
+	int	signal;
+	int	nb;
 
-	res = 0;
-	n = 1;
-	i = skiper(str);
-	if (str[i] == '-' || str[i] == '+')
+	signal = 1;
+	nb = 0;
+	nptr = ft_white_spaces(nptr);
+	if (*nptr == '-')
 	{
-		if (str[i] == '-')
-			n = -n;
-		i++;
+		signal *= -1;
+		nptr++;
 	}
-	while (str[i] && str[i] >= '0' && str[i] <= '9')
+	else if (*nptr == '+')
+		nptr++;
+	while (*nptr >= '0' && *nptr <= '9')
 	{
-		res *= 10;
-		res += (str[i] - 48);
-		i++;
+		nb = nb * 10 + *nptr - '0';
+		nptr++;
 	}
-	return (res * n);
+	return (nb * signal);
 }

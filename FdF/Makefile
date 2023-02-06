@@ -5,123 +5,57 @@
 #                                                     +:+ +:+         +:+      #
 #    By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/01/09 17:02:50 by vsa-port          #+#    #+#              #
-#    Updated: 2023/01/20 10:45:24 by vsa-port         ###   ########.fr        #
+#    Created: 2023/01/26 15:56:43 by vsa-port          #+#    #+#              #
+#    Updated: 2023/01/26 16:02:29 by vsa-port         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	fdf.out
+NAME = fdf
 
-CC	=	cc
+CC = cc
 
-CFLAGS	=	-Wall -Werror -Wextra -nostartfiles -g
-MLXFLAGS	=	-Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lz -lm
-#-L ./mlx_linux/ -lmlx -Ilmlx -lXext -lX11
-LIBFT	=	./libft/libft.a
-MLX	=	./mlx_linux/libmlx_Linux.a
-MLX2	=	./mlx_linux/libmlx.a
+CFLAGS = -O3 -Wall -Wextra -Werror -fsanitize=address -g
 
-LNK  = -L/libft \
-#libft.a libftprintf.a \
+SRCS = main.c \
+	  get_next_line.c \
+	  read_map.c \
+	  draw_grid.c \
+	  color.c \
+	  map_to_point.c \
+	  keys.c \
+	  keys2.c \
+	  keys3.c \
+	  mouse.c \
+	  transformations.c \
+	  menu.c \
+	  screen.c \
+	  rotations.c \
+	  check_map.c \
+	  check_map2.c
 
-SRC = main.c \
-	draw.c \
-	init_data.c \
-	key_and_mouse_controls.c \
+OBJS	= ${SRCS:.c=.o}
 
-OBJ	=	$(SRC:.c=.o)
+LIB_MINILIBX = -Lminilibx -lmlx -lXext -lX11 -lm -lz 
+LIB_LIBFT	= libft/libft.a
 
-all:	$(NAME)
+MINILIBX = minilibx/
+LIBFT = libft/
 
-$(NAME):	$(OBJ)
-	@$(MAKE) --no-print-directory -C ./libft
-	@cp ./libft/libft.a .
-	@echo "LIBFT DONE!💻📚"
-	@$(MAKE) --no-print-directory -C ./ft_printf
-	@cp ./ft_printf/libftprintf.a .
-	@echo "FT_PRINTF DONE!💻🖨"
-	@$(MAKE) --no-print-directory -C ./mlx_linux
-	@echo "MiniLibX DONE!💻🕹"
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIBFT) $(PRINTF) $(LNK) $(MLX) $(MLX2) $(MLXFLAGS) -lft
-	@echo "FdF READY!💻📈"
+all: $(NAME) lib
+
+$(NAME): $(OBJS) lib
+	$(CC) $(CFLAGS) $(OBJS) $(LIB_MINILIBX) $(LIB_LIBFT) -o $(NAME)
+
+lib:
+	make -C $(MINILIBX)
+	make -C $(LIBFT)
 
 clean:
-	@$(MAKE) clean -C ./libft
-	@$(MAKE) clean -C ./ft_printf
-	@rm -rf $(NAME)
-	@rm -rf *.o
-	@echo "OBJECTS DELETED!"
+	rm -f ${OBJS}
 
-fclean:
-	@$(MAKE) fclean -C ./libft
-	@$(MAKE) fclean -C ./ft_printf
-	@rm -rf $(NAME)
-	@rm -rf *.a
-	@rm -rf *.o
-	@echo "$(NAME) DELETED!"
+fclean: clean
+	rm -f ${NAME}
+	make clean -C ${MINILIBX}
+	make fclean -C ${LIBFT}
 
 re: fclean all
-
-.PHONY: all, clean, fclean, re, bonus
-
-# NAME = fdf
-
-# SRC = main.c \
-# 	draw.c \
-# 	init_data.c \
-# 	key_and_mouse_controls.c \
-
-# OBJDIR = ./obj/
-# OBJ = $(addprefix $(OBJDIR),$(SRC:.c=.o))
-# D_FILES = $(addprefix $(OBJDIR),$(SRC:.c=.d))
-# CC ?= gcc -Wall -Werror -Wextra
-# DEBUG = -g
-# OPTIMIZATION = -O2
-# LIB += -lmlx
-# LIB += -lft
-# LIB += -lXext #X11 miscellaneous extensions library
-# LIB += -lX11 #Core X11 protocol client library
-# LIB += -lm #standard C library of basic mathematical functions
-# LIB += -lz #libz - compression/decompression library
-# LIBPATH += -L./libraries/mlx_linux
-# LIBPATH += -L./libraries/libft
-# LIBINC += -I./libraries/mlx_linux/
-# LIBINC += -I./libraries/libft/
-
-# all : $(NAME)
-
-# $(NAME): obj $(OBJ)
-# 	make -C ./libraries/libft/
-# 	make -C ./libraries/mlx_linux/
-# 	$(CC) $(OBJ) $(LIBPATH) $(LIB) $(LIBINC)  -o $(NAME)
-
-# obj:
-# 	mkdir -p $(OBJDIR)
-
-# $(OBJ): $(OBJDIR)%.o : %.c fdf.h
-# 	$(CC) $(DEBUG) $(OPTIMIZATION) $(LIBINC) -c $< -o $@ -MMD
-
-# include $(wildcard $(D_FILES))
-
-# bonus: all
-
-# norm:
-# 	norminette $(SRC)
-
-# # rule for the cleaning
-# clean:
-# 	make clean -C ./libraries/libft
-# 	make clean -C ./libraries/mlx_linux
-# 	rm -rf $(OBJDIR)
-
-# fclean:
-# 	make fclean -C ./libraries/libft
-# 	make clean -C ./libraries/mlx_linux
-# 	rm -rf $(OBJDIR)
-# 	rm -f $(NAME)
-
-# # rule for rebuild a project
-# re: fclean all
-
-# # directory exceptions
-# .PHONY: all clean fclean norm re bonus

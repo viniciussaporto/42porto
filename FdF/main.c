@@ -5,59 +5,72 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/09 17:01:41 by vsa-port          #+#    #+#             */
-/*   Updated: 2023/01/19 14:45:40 by vsa-port         ###   ########.fr       */
+/*   Created: 2023/01/20 11:42:11 by vsa-port          #+#    #+#             */
+/*   Updated: 2023/01/26 16:05:52 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <errno.h>
 #include "fdf.h"
 
-extern void	init_data(t_fdf *data, char *file_name);
-extern void	draw(t_fdf *data);
-extern void	key_and_mouse_controls(t_fdf *data);
-
-int	main(int argc, char **argv)
+void	ft_set_variables(t_vars	*vars)
 {
-	t_fdf	data;
-
-	if (argc != 2)
-	{
-		errno = EINVAL;
-		perror("Error");
-		return (1);
-	}
-	data.shift_x = 1920 / 2;
-	data.shift_y = 1080 / 2;
-	data.angle_x = 45;
-	data.angle_y = 45;
-	data.angle_z = 0;
-	init_data(&data, argv[1]);
-	data.mlx_ptr = mlx_init();
-	data.win_ptr = mlx_new_window(data.mlx_ptr, 1920, 1080, "FDF");
-	data.img = mlx_new_image(data.mlx_ptr, 1920, 1080);
-	data.addr = mlx_get_data_addr(data.img, \
-						&data.bpp, &data.line_len, &data.endian);
-	key_and_mouse_controls(&data);
-	draw(&data);
-	mlx_loop(data.mlx_ptr);
+	vars->offset_x = 0;
+	vars->offset_y = 0;
+	vars -> theta = 0;
+	vars->phi = 0;
+	vars->qsi = 0;
+	vars->flag = 4;
+	vars->size_grid = 9;
+	vars->angle_y = 0.523599;
+	vars->angle_x = 0.523599;
+	vars->angle_p = 0.7854;
+	vars->z_modify = 1;
+	vars->screen.max_x = 0;
+	vars->screen.min_x = 0;
+	vars->screen.max_y = 0;
+	vars->screen.min_y = 0;
+	vars->max_z = 0;
+	vars->min_z = 0;
+	vars->transform_number = 1;
 }
 
-void	print_menu(t_fdf *data)
+void	choose_map(t_vars *vars)
 {
-	char	*menu;
+	int	fd;
+	
+	fd = check_map(vars);
+	ft_set_variables(vars);
+	map_loading(vars, fd, 0);
+	map_to_point(vars);
+	screen_size(vars);
+	if (vars->win)
+		mlx_destroy_window(vars->mlx, vars->win);
+	if (vars->img.img)
+		mlx_destroy_image(vars->mlx, vars->img.img);
+	vars->img.img = \
+		mlx_new_image(vars->mlx, vars->screen.max_x, vars->screen.max_y);
+	vars->img.addr = mlx_get_data_addr(vars->img.img, \
+		&vars->img.bits_per_pixel, &vars->img.line_length, &vars->img.endian);
+	vars->win = mlx_new_window(vars->mlx, \
+		vars->screen.max_x, vars->screen.max_y, "FdF - vsa-port");
+	mlx_hook(vars->win, 2, 1L << 0, handle_keypress, vars);
+	mlx_hook(vars->win, 17, 0 , ft_close, vars);
+	mlx_hook(vars->win, 4, 1L << 2, mouse_hook, vars);
+	draw_img_grid(vars);
+}
 
-	mlx_set_font(data->mlx_ptr, data->win_ptr, \
-	"*-*-*-*-*-*-*-230-*-*-*-*-iso8859-*");
-	menu = "arrows up, down, left, right: move picture";
-	mlx_string_put(data->mlx_ptr, data->win_ptr, 130, 40, 0xb8a900, menu);
-	menu = "numpad 4 and 6 and 2 and 8; rotate";
-	mlx_string_put(data->mlx_ptr, data->win_ptr, 130, 80, 0xb8a900, menu);
-	menu = "+/-: zoom";
-	mlx_string_put(data->mlx_ptr, data->win_ptr, 130, 120, 0xb8a900, menu);
-	menu = "page up/down: z-scale";
-	mlx_string_put(data->mlx_ptr, data->win_ptr, 130, 160, 0xb8a900, menu);
-	menu = "0: parallel projections";
-	mlx_string_put(data->mlx_ptr, data->win_ptr, 130, 200, 0xb8a900, menu);
+int	main(int ac, char **av)
+{
+	static t_vars	vars;
+	
+	(void) ac;
+	vars.mlx = mlx_init();
+	vars.map_number = 1;
+	vars.max_maps = 0;
+	vars.map_option = 1;
+	while (av[vars.max_maps] != NULL)
+		vars.max_maps++;
+	vars.map_file = av;
+	choose_map(&vars);
+	mlx_loop(vars.mlx);
 }
