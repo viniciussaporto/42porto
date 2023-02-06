@@ -4,4 +4,11 @@
 		"keysym.h": "c",
 		"keysymdef.h": "c"
 	}
+	"terminal.integrated.profiles.linux": {
+		"zsh (login)": {
+		  "path": "/usr/bin/zsh",
+		  "args": ["-l"],
+		  "bash": "null"
+		}
+	}
 }
