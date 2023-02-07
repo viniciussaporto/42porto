@@ -6,11 +6,11 @@
 #    By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/06 14:40:08 by vsa-port          #+#    #+#              #
-#    Updated: 2023/02/06 17:06:03 by vsa-port         ###   ########.fr        #
+#    Updated: 2023/02/07 10:24:06 by vsa-port         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CFLAGC = -Wall -Wextra -Werror
+CFLAGC = -Wall -Wextra -Werror -g
 
 CC = gcc
 
