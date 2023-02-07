@@ -6,7 +6,7 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 16:41:48 by vsa-port          #+#    #+#             */
-/*   Updated: 2023/02/06 16:41:51 by vsa-port         ###   ########.fr       */
+/*   Updated: 2023/02/07 10:44:45 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	usage(void);
 void	reset_data(void);
 void	handler(int sig, siginfo_t *info, void *ucontext);
 int		ft_atoi(const char *str);
+char	*ft_itoa(int n);
 void	ft_putstr(char *str);
 void	ft_putnbr(int n);
 #endif

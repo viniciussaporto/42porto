@@ -6,7 +6,7 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 14:35:01 by vsa-port          #+#    #+#             */
-/*   Updated: 2023/02/06 17:13:50 by vsa-port         ###   ########.fr       */
+/*   Updated: 2023/02/07 14:18:19 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	send_byte(char byte, int pid)
 			kill(pid, SIGUSR2);
 		else
 			kill(pid, SIGUSR1);
-		usleep(500);
+		usleep(1000);
 		j--;
 	}
 }

@@ -6,11 +6,12 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 13:49:13 by vsa-port          #+#    #+#             */
-/*   Updated: 2023/02/06 17:58:34 by vsa-port         ###   ########.fr       */
+/*   Updated: 2023/02/07 14:35:25 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
+#include <stdio.h>
 
 t_data	g_data;
 
@@ -41,11 +42,13 @@ void	handler(int sig, siginfo_t *info, void *ucontext)
 
 int	main(void)
 {
+	int	pid;
+ 
 	struct sigaction	sa;
 
 	reset_data();
-	ft_putstr("PID : ");
-	ft_putnbr(getpid());
+	pid = getpid();
+	printf("PID:%d\n", pid);
 	ft_putstr("\n");
 	sa.sa_sigaction = &handler;
 	sa.sa_flags = SA_SIGINFO;
