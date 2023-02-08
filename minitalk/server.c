@@ -6,11 +6,7 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 13:49:13 by vsa-port          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/02/07 14:35:25 by vsa-port         ###   ########.fr       */
-=======
-/*   Updated: 2023/02/08 14:37:05 by vsa-port         ###   ########.fr       */
->>>>>>> 7240667 (new version minitalk)
+/*   Updated: 2023/02/08 14:52:28 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +78,6 @@ int	main(void)
 	int	pid;
  
 	struct sigaction	sa;
-<<<<<<< HEAD
 
 	reset_data();
 	pid = getpid();
@@ -93,11 +88,6 @@ int	main(void)
 	sigemptyset(&sa.sa_mask);
 	sigaddset(&sa.sa_mask, SIGUSR1);
 	sigaddset(&sa.sa_mask, SIGUSR2);
-=======
-	
-	sa.sa_handler = &handler;
-	sa.sa_flags = SA_RESTART;
->>>>>>> 7240667 (new version minitalk)
 	sigaction(SIGUSR1, &sa, NULL);
 	sigaction(SIGUSR2, &sa, NULL);
 	write(1, "PID : ", 6);

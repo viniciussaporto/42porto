@@ -6,11 +6,7 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 14:35:01 by vsa-port          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/02/07 14:18:19 by vsa-port         ###   ########.fr       */
-=======
-/*   Updated: 2023/02/08 14:34:32 by vsa-port         ###   ########.fr       */
->>>>>>> 7240667 (new version minitalk)
+/*   Updated: 2023/02/08 14:40:39 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +16,6 @@ static size_t	check(size_t n, const char *nptr, int sign)
 {
 	while (*nptr >= '0' && *nptr <= '9')
 	{
-<<<<<<< HEAD
-		if (byte >> j & 1)
-			kill(pid, SIGUSR2);
-		else
-			kill(pid, SIGUSR1);
-		usleep(1000);
-		j--;
-=======
 		n = *nptr - '0' + (n * 10);
 		nptr++;
 	}
@@ -76,7 +64,6 @@ void	send_signal(int bit, int pid)
 			exit(1);
 		}
 		usleep(150);
->>>>>>> 7240667 (new version minitalk)
 	}
 }
 
