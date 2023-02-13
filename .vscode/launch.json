@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/vas-port/42porto/minitalk",
-      "program": "/home/vas-port/42porto/minitalk/build/Debug/outDebug",
+      "cwd": "/nfs/homes/vsa-port/42porto/42porto",
+      "program": "/nfs/homes/vsa-port/42porto/42porto/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
