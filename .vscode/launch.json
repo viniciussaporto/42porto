@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/nfs/homes/vsa-port/42porto/42porto",
-      "program": "/nfs/homes/vsa-port/42porto/42porto/build/Debug/outDebug",
+      "cwd": "/home/vas-port/42porto",
+      "program": "/home/vas-port/42porto/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
