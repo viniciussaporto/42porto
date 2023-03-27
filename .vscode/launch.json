@@ -7,9 +7,9 @@
       "request": "launch",
       "args": [],
       "stopAtEntry": false,
-      "externalConsole": false,
-      "cwd": "/home/vas-port/42porto",
-      "program": "/home/vas-port/42porto/build/Debug/outDebug",
+      "externalConsole": true,
+      "cwd": "c:/Users/vinic/Documents/repos/42porto",
+      "program": "c:/Users/vinic/Documents/repos/42porto/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
