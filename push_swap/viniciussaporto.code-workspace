@@ -1,0 +1,28 @@
+{
+	"folders": [
+		{
+			"name": "viniciussaporto",
+			"path": "../../viniciussaporto"
+		},
+		{
+			"name": "42porto",
+			"path": ".."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"MOUSE.C": "cpp",
+			"keysym.h": "c",
+			"keysymdef.h": "c"
+		},
+		"terminal.integrated.profiles.linux": {
+			"zsh (login)": {
+				"path": "/usr/bin/zsh",
+				"args": [
+					"-l"
+				],
+				"bash": "null"
+			}
+		}
+	}
+}
