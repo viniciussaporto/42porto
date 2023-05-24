@@ -1,7 +1,5 @@
-#ifndef SORT_PROGRAM_H
-#define SORT_PROGRAM_H
-
-// Function declarations
+#ifndef SORTING_ACTIONS_H
+#define SORTING_ACTIONS_H
 
 void sa(int* a, int size_a);
 void sb(int* b, int size_b);
@@ -14,7 +12,7 @@ void rr(int* a, int size_a, int* b, int size_b);
 void rra(int* a, int size_a);
 void rrb(int* b, int size_b);
 void rrr(int* a, int size_a, int* b, int size_b);
-
+void printContainers(int* a, int size_a, int* b, int size_b);
 void sortArray(int* arr, int size);
 
-#endif  // SORT_PROGRAM_H
+#endif
