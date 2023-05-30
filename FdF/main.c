@@ -6,7 +6,7 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 11:42:11 by vsa-port          #+#    #+#             */
-/*   Updated: 2023/01/26 16:05:52 by vsa-port         ###   ########.fr       */
+/*   Updated: 2023/05/30 16:26:08 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ft_set_variables(t_vars	*vars)
 void	choose_map(t_vars *vars)
 {
 	int	fd;
-	
+
 	fd = check_map(vars);
 	ft_set_variables(vars);
 	map_loading(vars, fd, 0);
@@ -54,7 +54,7 @@ void	choose_map(t_vars *vars)
 	vars->win = mlx_new_window(vars->mlx, \
 		vars->screen.max_x, vars->screen.max_y, "FdF - vsa-port");
 	mlx_hook(vars->win, 2, 1L << 0, handle_keypress, vars);
-	mlx_hook(vars->win, 17, 0 , ft_close, vars);
+	mlx_hook(vars->win, 17, 0, ft_close, vars);
 	mlx_hook(vars->win, 4, 1L << 2, mouse_hook, vars);
 	draw_img_grid(vars);
 }
@@ -62,7 +62,7 @@ void	choose_map(t_vars *vars)
 int	main(int ac, char **av)
 {
 	static t_vars	vars;
-	
+
 	(void) ac;
 	vars.mlx = mlx_init();
 	vars.map_number = 1;

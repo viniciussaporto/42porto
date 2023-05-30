@@ -6,7 +6,7 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 11:42:26 by vsa-port          #+#    #+#             */
-/*   Updated: 2023/01/26 15:17:47 by vsa-port         ###   ########.fr       */
+/*   Updated: 2023/05/30 17:15:06 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	clean_img(t_vars *vars)
 {
 	int	i;
 	int	j;
-	
+
 	i = -1;
 	while (++i < vars->screen.max_x)
 	{
@@ -49,7 +49,7 @@ int	mouse_hook(int button, int x, int y, t_vars *vars)
 	clean_img(vars);
 	if (button == 4)
 		vars->size_grid += 0.5;
-	else if (button ==5)
+	else if (button == 5)
 	{
 		if (vars->size_grid > 0.5)
 			vars->size_grid -= 0.5;

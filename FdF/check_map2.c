@@ -6,7 +6,7 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 14:39:28 by vsa-port          #+#    #+#             */
-/*   Updated: 2023/01/27 11:00:05 by vsa-port         ###   ########.fr       */
+/*   Updated: 2023/05/30 16:29:36 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	strcmp_fdf(char *a)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	char	*b;
 
 	b = ".fdf";

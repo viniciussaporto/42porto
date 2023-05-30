@@ -6,7 +6,7 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 15:00:31 by vsa-port          #+#    #+#             */
-/*   Updated: 2023/01/26 15:14:27 by vsa-port         ###   ########.fr       */
+/*   Updated: 2023/05/30 16:25:16 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ void	ft_max_and_min(int nb, t_vars *vars)
 
 int	*split_array(t_vars *vars, char *line)
 {
-	int	*t;
+	int		*t;
+	int		size;
+	int		i;
 	char	**temp;
-	int	size;
-	int	i;
 
 	size = 0;
 	i = 0;

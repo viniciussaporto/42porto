@@ -6,7 +6,7 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 11:22:21 by vsa-port          #+#    #+#             */
-/*   Updated: 2023/01/25 11:38:10 by vsa-port         ###   ########.fr       */
+/*   Updated: 2023/05/30 17:14:41 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	map_to_point(t_vars *vars)
 {
 	int	x;
 	int	y;
-	
+
 	vars->point_map = malloc(sizeof(t_point *) * vars->nb_lines);
 	y = -1;
 	while (vars->map[++y])

@@ -6,7 +6,7 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 14:44:17 by vsa-port          #+#    #+#             */
-/*   Updated: 2023/01/27 11:51:03 by vsa-port         ###   ########.fr       */
+/*   Updated: 2023/05/30 16:33:49 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@
 # define MLX_ERROR 1
 # define ESCAPE 65307
 
-typedef struct	s_data{
+typedef struct s_data{
 	void	*img;
 	char	*addr;
-	int	bits_per_pixel;
-	int	line_length;
-	int	endian;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
 }				t_data;
 
 typedef struct s_point{
@@ -44,7 +44,7 @@ typedef struct s_point{
 	float	z;
 }				t_point;
 
-typedef struct	s_screen {
+typedef struct s_screen {
 	int	min_x;
 	int	min_y;
 	int	max_x;

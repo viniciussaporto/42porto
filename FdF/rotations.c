@@ -6,7 +6,7 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 15:18:11 by vsa-port          #+#    #+#             */
-/*   Updated: 2023/01/26 15:27:24 by vsa-port         ###   ########.fr       */
+/*   Updated: 2023/05/30 17:13:15 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_point	rotation_x(t_point a, t_vars *vars)
 {
 	float	temp_z;
 	float	temp_y;
-	
+
 	temp_z = a.z;
 	temp_y = a.y;
 	a.y = temp_y * cos(vars->theta) + temp_z * sin(vars->theta);
@@ -38,7 +38,7 @@ t_point	rotation_y(t_point a, t_vars *vars)
 {
 	float	temp_x;
 	float	temp_z;
-	
+
 	temp_x = a.x;
 	temp_z = a.z;
 	a.x = temp_x * cos(vars->phi) + temp_z * sin(vars->phi);
@@ -50,7 +50,7 @@ t_point	rotation_z(t_point a, t_vars *vars)
 {
 	float	temp_x;
 	float	temp_y;
-	
+
 	temp_x = a.x;
 	temp_y = a.y;
 	a.x = temp_x * cos(vars->qsi) - temp_y * sin(vars->qsi);

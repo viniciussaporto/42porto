@@ -6,7 +6,7 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 13:53:37 by vsa-port          #+#    #+#             */
-/*   Updated: 2023/01/25 11:09:31 by vsa-port         ###   ########.fr       */
+/*   Updated: 2023/05/30 16:30:34 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	handle_color(int keysym, t_vars *vars)
 {
 	if (keysym == 49 && vars->flag < 9)
 		vars->flag++;
-	else if (keysym == 50 && vars->flag >0)
+	else if (keysym == 50 && vars->flag > 0)
 		vars->flag--;
 	else if (keysym == '0')
 		vars->map_option = 0;

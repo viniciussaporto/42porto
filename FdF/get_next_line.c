@@ -6,7 +6,7 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 10:35:31 by vsa-port          #+#    #+#             */
-/*   Updated: 2023/01/26 16:07:15 by vsa-port         ###   ########.fr       */
+/*   Updated: 2023/05/30 16:29:00 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ static size_t	ft_strlen_nl(const char *str)
 
 char	*ft_strjoin(char *s1, char *s2)
 {
-	int	size_concat;
+	int		size_concat;
 	char	*concat;
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 
 	i = 0;
 	j = -1;
@@ -57,11 +57,11 @@ char	*ft_strjoin(char *s1, char *s2)
 
 char	*get_next_line(int fd)
 {
-	static char	buffer[BUFFER_SIZE + 1];
-	char	*line;
-	int	i;
-	int	j;
-	int	flag;
+	static char		buffer[BUFFER_SIZE + 1];
+	char			*line;
+	int				i;
+	int				j;
+	int				flag;
 
 	if (BUFFER_SIZE <= 0 || (read(fd, 0, 0) < 0))
 		return (NULL);

@@ -6,7 +6,7 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 10:54:57 by vsa-port          #+#    #+#             */
-/*   Updated: 2023/01/26 16:07:46 by vsa-port         ###   ########.fr       */
+/*   Updated: 2023/05/30 17:12:35 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	edge_case(t_vars *vars, t_point a, t_point b, float range, float x)
 	while (fabs(b.y - y) > 0.5)
 	{
 		vars->rgb_p = vars->rgb_p + range / ((vars->size_grid));
-		my_mlx_pixel_put(vars, x , y, percent_to_color(vars->rgb_p, \
+		my_mlx_pixel_put(vars, x, y, percent_to_color(vars->rgb_p, \
 			vars->flag));
 		y += ((b.y - a.y) / (fabs(b.y - a.y)));
 		flag++;
@@ -66,15 +66,15 @@ void	two_points(t_vars *vars, t_point a, t_point b)
 {
 	float	x;
 	float	y;
-	
+
 	a = transformations(vars, a);
 	b = transformations(vars, b);
 	x = a.x;
 	initializer(vars, a, b, x);
-	while(fabs(b.x -x) > 0.5)
+	while (fabs(b.x - x) > 0.5)
 	{
 		y = vars->slope * (x - a.x) + a.y;
-		vars->rgb_p = vars->rgb_p +vars->range_z / ((vars->size_grid));
+		vars->rgb_p = vars->rgb_p + vars->range_z / ((vars->size_grid));
 		my_mlx_pixel_put(vars, x, y, percent_to_color(vars->rgb_p, vars->flag));
 		if ((fabs(y - (vars->slope * ((x + vars->direction) - a.x) + a.y))) > 1)
 		{
@@ -95,7 +95,7 @@ void	draw_img_grid(t_vars *vars)
 	int	x;
 	int	y;
 	int	y_new;
-	
+
 	y = -1;
 	while (++y < vars->nb_lines - 1)
 	{
@@ -112,6 +112,6 @@ void	draw_img_grid(t_vars *vars)
 			x++;
 		}
 	}
-	mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img, 0 , 0);
+	mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img, 0, 0);
 	ft_menu(vars);
 }
