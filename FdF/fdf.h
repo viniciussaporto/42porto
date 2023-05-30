@@ -6,7 +6,7 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 14:44:17 by vsa-port          #+#    #+#             */
-/*   Updated: 2023/05/30 16:33:49 by vsa-port         ###   ########.fr       */
+/*   Updated: 2023/05/30 18:46:25 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,16 @@ typedef struct s_screen {
 	int	max_x;
 	int	max_y;
 }				t_screen;
+
+typedef struct	s_edge_case_args
+{
+	t_vars	*vars;
+	t_point a;
+	t_point b;
+	float	range;
+	float	range_z;
+	float	x;
+}				t_edge_case_args;
 
 typedef struct s_vars {
 	void		*mlx;
