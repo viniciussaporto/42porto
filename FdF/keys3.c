@@ -6,7 +6,7 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 11:10:14 by vsa-port          #+#    #+#             */
-/*   Updated: 2023/05/30 17:12:52 by vsa-port         ###   ########.fr       */
+/*   Updated: 2023/05/31 16:58:05 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,14 @@ void	handle_z(int keysym, t_vars *vars)
 
 void	free_map(t_vars *vars)
 {
-	int	i;
+	int		i;
 
-	i = -1;
-	while (vars->map && vars->map[i++])
+	i = 0;
+	while (vars->map && vars->map[i])
 	{
 		free(vars->map[i]);
 		free(vars->point_map[i]);
+		i++;
 	}
 	free(vars->map);
 	free(vars->point_map);

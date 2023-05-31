@@ -6,7 +6,7 @@
 #    By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/26 15:56:43 by vsa-port          #+#    #+#              #
-#    Updated: 2023/01/26 16:02:29 by vsa-port         ###   ########.fr        #
+#    Updated: 2023/05/31 16:29:43 by vsa-port         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = fdf
 
 CC = cc
 
-CFLAGS = -O3 -Wall -Wextra -Werror -fsanitize=address -g
+CFLAGS = -Wall -Wextra -Werror -g
 
 SRCS = main.c \
 	  get_next_line.c \
