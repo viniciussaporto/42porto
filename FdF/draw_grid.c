@@ -6,7 +6,7 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 10:54:57 by vsa-port          #+#    #+#             */
-/*   Updated: 2023/05/30 18:46:35 by vsa-port         ###   ########.fr       */
+/*   Updated: 2023/05/31 16:15:49 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,29 +40,33 @@ void	edge_case(t_edge_case_args *args)
 	y = args->a.y;
 	while (fabs(args->b.y - y) > 0.5)
 	{
-		args->vars->rgb_p = args->vars->rgb_p + args->range / (args->vars->size_grid);
-		my_mlx_pixel_put(args->vars, args->x, y, percent_to_color(args->vars->rgb_p, args->vars->flag));
+		args->vars->rgb_p = args->vars->rgb_p \
+			+ args->range / (args->vars->size_grid);
+		my_mlx_pixel_put(args->vars, args->x, y, \
+			percent_to_color(args->vars->rgb_p, args->vars->flag));
 		y += ((args->b.y - args->a.y) / (fabs(args->b.y - args->a.y)));
 		flag++;
 	}
 	return ;
 }
 
-void initializer(t_vars* vars, t_point a, t_point b)
+void	initializer(t_vars *vars, t_point a, t_point b, float x)
 {
-    t_edge_case_args edge_case_args;
-    edge_case_args.vars = vars;
-    edge_case_args.a = a;
-    edge_case_args.b = b;
-    edge_case_args.range = vars->range;
-    edge_case_args.range_z = vars->range_z;
-    edge_case_args.x = vars->x;
+	t_edge_case_args	edge_case_args;
 
-    if (fabs(b.x - a.x) <= 0.5 && fabs(b.y - a.y) > 0.5)
-        edge_case(&edge_case_args);
-
-    vars->slope = (b.y - a.y) / (b.x - a.x);
-    vars->direction = (b.x - a.x) / (fabs(b.x - a.x));
+	edge_case_args.vars = vars;
+	edge_case_args.a = a;
+	edge_case_args.b = b;
+	edge_case_args.range = a.z / vars->new_max;
+	if (b.z - a.z > 0)
+		edge_case_args.range_z = (b.z / vars->new_max - edge_case_args.range);
+	else
+		edge_case_args.range_z = -(a.z / vars->new_max - b.z / vars->new_max);
+	edge_case_args.x = x;
+	if (fabs(b.x - a.x) <= 0.5 && fabs(b.y - a.y) > 0.5)
+		edge_case(&edge_case_args);
+	vars->slope = (b.y - a.y) / (b.x - a.x);
+	vars->direction = (b.x - a.x) / (fabs(b.x - a.x));
 }
 
 void	two_points(t_vars *vars, t_point a, t_point b)

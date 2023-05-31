@@ -6,7 +6,7 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 14:44:17 by vsa-port          #+#    #+#             */
-/*   Updated: 2023/05/30 18:46:25 by vsa-port         ###   ########.fr       */
+/*   Updated: 2023/05/31 16:09:26 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,16 +51,6 @@ typedef struct s_screen {
 	int	max_y;
 }				t_screen;
 
-typedef struct	s_edge_case_args
-{
-	t_vars	*vars;
-	t_point a;
-	t_point b;
-	float	range;
-	float	range_z;
-	float	x;
-}				t_edge_case_args;
-
 typedef struct s_vars {
 	void		*mlx;
 	void		*win;
@@ -100,6 +90,16 @@ typedef struct s_vars {
 	int			direction;
 	float		angle_p;
 }				t_vars;
+
+typedef struct	s_edge_case_args
+{
+	t_vars	*vars;
+	t_point a;
+	t_point b;
+	float	range;
+	float	range_z;
+	float	x;
+}				t_edge_case_args;
 
 char	*get_next_line(int fd);
 void	map_loading(t_vars *vars, int fd, int index);
