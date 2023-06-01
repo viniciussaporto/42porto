@@ -6,56 +6,45 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 13:49:13 by vsa-port          #+#    #+#             */
-/*   Updated: 2023/02/17 16:19:01 by vsa-port         ###   ########.fr       */
+/*   Updated: 2023/06/01 17:14:06 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include <unistd.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <signal.h>
 
-static void	print_pid(void);
-static void	print_message(int sig, siginfo_t *info, void *context);
-
-int main (void)
+static void	signal_handler(int sig)
 {
-	print_pid();
-	ft_signal(SIGUSR1, print_message);
-	ft_signal(SIGUSR2, print_message);
+	static unsigned char	c = 0x00;
+	static int				bit_count = 0;
+
+	if (sig == SIGUSR1 || sig == SIGUSR2)
+	{
+		c |= (sig == SIGUSR1) << (7 - bit_count);
+		bit_count++;
+		if (bit_count == 8)
+		{
+			if (c == '\0')
+				write(1, "\n", 1);
+			else
+				write(1, &c, 1);
+			c = 0x00;
+			bit_count = 0;
+		}
+	}
+}
+
+int	main(void)
+{
+	signal(SIGUSR1, signal_handler);
+	signal(SIGUSR2, signal_handler);
+
+	printf("Server PID: %d\n", getpid());
+
 	while (1)
 		pause();
-	return (EXIT_SUCCESS);
-}
 
-static void	print_pid(void)
-{
-	ft_putstr_fd("Server PID: ", 1);
-	ft_putstr_fd(getpid(), 1);
-	ft_putstr_fd(".\n", 1);
-}
-
-static void	print_message(int sig, siginfo_t *info, void *context)
-{
-	static size_t	byte;
-	static t_byte	decoded_char;
-	
-	(void) context;
-	if (sig == SIGUSR1)
-		sig = 1;
-	else if (sig == SIGUSR2)
-		sig = 0;
-	if (byte == 0 && decoded_char == 0)
-		byte = 8;
-	byte--;
-	decoded_char += (sig & 1) << byte;
-	if (byte == 0)
-	{
-		if (!decoded_char)
-		{
-			ft_putchar_fd('\n', 1);
-			ft_kill(info->si_pid, SIGUSR1);
-		}
-		ft_putchar_fd(decoded_char, 1);
-		byte = 8;
-		decoded_char = 0;
-	}
+	return (0);
 }

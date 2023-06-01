@@ -6,25 +6,30 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 16:41:48 by vsa-port          #+#    #+#             */
-/*   Updated: 2023/02/17 16:26:42 by vsa-port         ###   ########.fr       */
+/*   Updated: 2023/06/01 17:03:51 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #ifndef MINITALK_H
-# define MINITALK_H
+#define MINITALK_H
 
-# define SLEEP_TIME 300
+#include <signal.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-# include <unistd.h>
-# include <signal.h>
-# include <stdlib.h>
-# include <sys/types.h>
-# include "libft/libft.h"
+#define MESSAGE_SIZE 1024
 
-typedef void	t_handler(int, siginfo_t*, void*);
+// Function to send a single character to the server
+void send_char(int pid, char c);
 
-void	ft_kill(pid_t pid, int signum);
-t_handler	*ft_signal(int signum, t_handler *handler);
+// Function to send a message to the server
+void send_message(int pid, char *message);
+
+// Function to send acknowledgment signal to the client
+void send_ack(int pid);
+
+// Signal handler function for the server
+void sig_handler(int sig, siginfo_t *info, void *context);
 
 #endif

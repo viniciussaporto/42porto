@@ -6,7 +6,7 @@
 #    By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 19:03:30 by vsa-port          #+#    #+#              #
-#    Updated: 2023/01/27 11:23:57 by vsa-port         ###   ########.fr        #
+#    Updated: 2023/06/01 16:02:28 by vsa-port         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,9 +61,9 @@ OBJS	= ${SRCS:.c=.o}
 OBNS	= ${BNS:.c=.o}
 INCS	= libft.h
 NAME	= libft.a
-LIBC	= ar rcs
-CC		= clang
-RM		= rm -f
+LIBC	= ar -rcs
+CC		= cc
+RM		= rm -rf
 CFLAGS	= -Wall -Wextra -Werror
 
 

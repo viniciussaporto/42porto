@@ -6,7 +6,7 @@
 #    By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/06 14:40:08 by vsa-port          #+#    #+#              #
-#    Updated: 2023/02/17 16:32:38 by vsa-port         ###   ########.fr        #
+#    Updated: 2023/06/01 16:17:31 by vsa-port         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,16 +15,31 @@ SERVER = server
 CLIENT = client
 SRC = server.c \
 	client.c \
-	wrapper.c
-LIBFT = ./libft/libft.a
+
+LIB_LIBFT = ./libft/libft.a
 OBJS = $(SRC:.c=.o)
 
-CC = cc -Wall -Wextra -Werror
-RM = rm -rf
+CC = cc
+CFLAGS = -Wall -Wextra -Werror
+LIBFT = libft/
 
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(OBJS) $(SERVER) $(CLIENT)
+$(NAME): $(OBJS) lib
+	$(CC) $(CFLAGS) -o $(SERVER) server.o $(LIB_LIBFT)
+	$(CC) $(CFLAGS) -o $(CLIENT) client.o $(LIB_LIBFT)
 
-$(SERVER): $(LIBFT) $(OBJS)
-			$(CC) 
+lib:
+	make -C $(LIBFT)
+
+$(OBJS): $(SRC)
+	$(CC) $(CFLAGS) -c $(SRC)
+
+clean:
+	rm -rf $(OBJS)
+
+fclean: clean
+	rm -rf $(SERVER) $(CLIENT)
+	make fclean -C $(LIBFT)
+
+re: fclean all
