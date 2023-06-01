@@ -6,7 +6,7 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 13:49:13 by vsa-port          #+#    #+#             */
-/*   Updated: 2023/06/01 17:26:43 by vsa-port         ###   ########.fr       */
+/*   Updated: 2023/06/01 18:12:15 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <signal.h>
+#include "minitalk.h"
+#include "libft/ft_printf/ft_printf.h"
 
 static void	signal_handler(int sig)
 {
@@ -38,10 +40,13 @@ static void	signal_handler(int sig)
 
 int	main(void)
 {
+	int	pid;
+
 	signal(SIGUSR1, signal_handler);
 	signal(SIGUSR2, signal_handler);
 
-	printf("Server PID: %d\n", getpid());
+	pid = getpid();
+	ft_printf("Server PID: %d\n", pid);
 
 	while (1)
 		pause();

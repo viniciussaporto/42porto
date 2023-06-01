@@ -6,7 +6,7 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 14:35:01 by vsa-port          #+#    #+#             */
-/*   Updated: 2023/06/01 17:11:05 by vsa-port         ###   ########.fr       */
+/*   Updated: 2023/06/01 18:12:18 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include <signal.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include "minitalk.h"
+#include "libft/ft_printf/ft_printf.h"
 
 static void	send_character(int pid, char c)
 {
@@ -27,7 +29,7 @@ static void	send_character(int pid, char c)
 		else
 			kill(pid, SIGUSR2);
 		bit_count++;
-		usleep(100);
+		usleep(50);
 	}
 }
 
@@ -45,7 +47,7 @@ int	main(int argc, char **argv)
 {
 	if (argc != 3)
 	{
-		printf("Usage: %s <server_pid> <message>\n", argv[0]);
+		ft_printf("Usage: %s <server_pid> <message>\n", argv[0]);
 		return (1);
 	}
 
