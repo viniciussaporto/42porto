@@ -6,7 +6,7 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 13:46:09 by vsa-port          #+#    #+#             */
-/*   Updated: 2023/06/12 14:05:23 by vsa-port         ###   ########.fr       */
+/*   Updated: 2023/06/21 16:35:25 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	bubble_sort(t_stack **stack)
 		{
 			if (temp->value > temp->next->value)
 			{
-				swap == 1;
+				swap = 1;
 				num_temp = temp->next->value;
 				temp->next->value = bubble_swap(temp->value, temp->next->value);
 				temp->value = num_temp;
@@ -65,7 +65,7 @@ int	len_stack_index_assign(t_stack **stack)
 	counter = 0;
 	if (*stack != NULL)
 	{
-		count = 1;
+		counter = 1;
 		while (temp->next != NULL)
 		{
 			temp->index = i;
@@ -95,7 +95,7 @@ void	index_assignment(t_stack **stack_a, t_stack **stack_sorted)
 		while (temp_a)
 		{
 			if (temp_a->value == temp_sorted->value \
-			&& temp_a->index != tempp_sorted->index)
+			&& temp_a->index != temp_sorted->index)
 			{
 				i = 0;
 				temp_a->index = temp_sorted->index;

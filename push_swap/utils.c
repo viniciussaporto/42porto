@@ -6,7 +6,7 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 14:50:30 by vsa-port          #+#    #+#             */
-/*   Updated: 2023/06/20 14:50:31 by vsa-port         ###   ########.fr       */
+/*   Updated: 2023/06/21 16:42:34 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ long	ft_atoi(const char *str)
 	i = 0;
 	sign = 1;
 	num = 0;
-	while (((str + i) >= 9 && *(str + i) <= 13) || ((str + i) == ' '))
+	while ((*(str + i) >= 9 && *(str + i) <= 13) || (*(str + i) == ' '))
 	{
 		i++;
 	}

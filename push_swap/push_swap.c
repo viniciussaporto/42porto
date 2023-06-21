@@ -6,9 +6,11 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 14:47:05 by vsa-port          #+#    #+#             */
-/*   Updated: 2023/06/20 14:47:06 by vsa-port         ###   ########.fr       */
+/*   Updated: 2023/06/21 16:33:06 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "push_swap.h"
 
 void	reverse_rotate_b(t_stack **stack)
 {
