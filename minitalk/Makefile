@@ -6,7 +6,7 @@
 #    By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/06 14:40:08 by vsa-port          #+#    #+#              #
-#    Updated: 2023/06/01 18:19:25 by vsa-port         ###   ########.fr        #
+#    Updated: 2023/09/18 20:24:32 by vsa-port         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,41 +16,38 @@ CLIENT = client
 SRC = server.c \
 	client.c \
 
-LIBFT = libft/
-LIBFTPRINTF = libft/ft_printf/
+LIBFTPRINTF = ./libft/ft_printf/
 
-LIBFT_LIB = $(LIBFT)libft.a
 LIBFTPRINTF_LIB = $(LIBFTPRINTF)libftprintf.a
 
 OBJS = $(SRC:.c=.o)
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-LDFLAGS = -L$(LIBFT) -L$(LIBFTPRINTF) -lft -lftprintf
+LDFLAGS = $(LIBFTPRINTF)libftprintf.a
 
 all: $(NAME)
 
-$(NAME): $(OBJS) libft libftprintf
-	$(CC) $(CFLAGS) -o $(SERVER) server.o $(LDFLAGS)
-	$(CC) $(CFLAGS) -o $(CLIENT) client.o $(LDFLAGS)
-
-libft:
-	make -C $(LIBFT)
+$(NAME): $(OBJS) libftprintf
+	@$(CC) $(CFLAGS) -o $(SERVER) server.o $(LDFLAGS)
+	@$(CC) $(CFLAGS) -o $(CLIENT) client.o $(LDFLAGS)
+	@echo "Successfully built server and client!"
 
 libftprintf:
-	make -C $(LIBFTPRINTF)
+	@$(MAKE) -C $(LIBFTPRINTF)
+	@echo "Successfully built PRINTF!"
 
 $(OBJS): $(SRC)
 	$(CC) $(CFLAGS) -c $(SRC)
 
 clean:
-	rm -rf $(OBJS)
-	make clean -C $(LIBFT)
-	make clean -C $(LIBFTPRINTF)
+	@rm -rf $(OBJS)
+	@$(MAKE) clean -C $(LIBFTPRINTF)
+	@echo "CLEAN complete!"
 
 fclean: clean
-	rm -rf $(SERVER) $(CLIENT)
-	make fclean -C $(LIBFT)
-	make fclean -C $(LIBFTPRINTF)
+	@rm -rf $(SERVER) $(CLIENT)
+	@$(MAKE) fclean -C $(LIBFTPRINTF)
+	@echo "FCLEAN complete!"
 
 re: fclean all
