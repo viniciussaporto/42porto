@@ -6,7 +6,7 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 13:49:13 by vsa-port          #+#    #+#             */
-/*   Updated: 2023/06/01 18:12:15 by vsa-port         ###   ########.fr       */
+/*   Updated: 2023/09/18 20:29:05 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,9 @@ int	main(void)
 
 	signal(SIGUSR1, signal_handler);
 	signal(SIGUSR2, signal_handler);
-
 	pid = getpid();
 	ft_printf("Server PID: %d\n", pid);
-
 	while (1)
 		pause();
-
 	return (0);
 }
