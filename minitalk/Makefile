@@ -6,7 +6,7 @@
 #    By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/06 14:40:08 by vsa-port          #+#    #+#              #
-#    Updated: 2023/09/18 20:24:32 by vsa-port         ###   ########.fr        #
+#    Updated: 2023/09/19 17:47:40 by vsa-port         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,14 @@ $(NAME): $(OBJS) libftprintf
 	@$(CC) $(CFLAGS) -o $(SERVER) server.o $(LDFLAGS)
 	@$(CC) $(CFLAGS) -o $(CLIENT) client.o $(LDFLAGS)
 	@echo "Successfully built server and client!"
+
+server: $(NAME)
+	@$(CC) $(CFLAGS) -o $(SERVER) server.o $(LDFLAGS)
+	@echo "Successfully built server!"
+
+client: $(NAME)
+	@$(CC) $(CFLAGS) -o $(CLIENT) client.o $(LDFLAGS)
+	@echo "Successfully built client!"
 
 libftprintf:
 	@$(MAKE) -C $(LIBFTPRINTF)
