@@ -6,7 +6,7 @@
 /*   By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 14:35:01 by vsa-port          #+#    #+#             */
-/*   Updated: 2023/09/19 16:46:13 by vsa-port         ###   ########.fr       */
+/*   Updated: 2023/09/19 17:57:47 by vsa-port         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,13 @@ int	main(int argc, char **argv)
 	int		server_pid;
 	char	*message;
 
-	server_pid = atoi(argv[1]);
-	message = argv[2];
 	if (argc != 3)
 	{
 		ft_printf("Usage: %s <server_pid> <message>\n", argv[0]);
 		return (1);
 	}
+	server_pid = atoi(argv[1]);
+	message = argv[2];
 	send_string(server_pid, message);
 	return (0);
 }
