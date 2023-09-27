@@ -5,40 +5,43 @@
 #                                                     +:+ +:+         +:+      #
 #    By: vsa-port <vsa-port@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/06/20 14:50:44 by vsa-port          #+#    #+#              #
-#    Updated: 2023/06/20 14:51:05 by vsa-port         ###   ########.fr        #
+#    Created: 2022/12/12 11:23:03 by vsa-port          #+#    #+#              #
+#    Updated: 2022/12/12 11:59:27 by vsa-port         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME_S = push_swap
+NAME = libftprintf.a
 
-SRCS_S = push_swap.c checkers.c indexing.c operations.c utils.c sort_few.c
+CC = cc
 
+CFLAGS = -Wall -Wextra -Werror
 
-OBJS_S = $(SRCS_S:.c=.o)
+SRC = ft_printf.c \
+	ft_print_address.c \
+	ft_print_char.c \
+	ft_print_hexa.c \
+	ft_print_numbs.c \
+	ft_print_string.c \
+	ft_print_unsigned.c
 
+OBJ = $(SRC:.c=.o)
 
-CC = gcc
+RM = rm -rf
 
-CFLAGS = -Wall -Werror -Wextra
+all: $(NAME)
+	@echo "make all built!"
 
-RM = rm -f
-
-all: $(NAME_S)
-
-$(%.o): $(%.c)
-	$(CC) -o $@ -c $^
-
-$(NAME_S): $(OBJS_S) 
-	$(CC) $(CFLAGS) -o $@ $(OBJS_S)
-
+$(NAME): $(OBJ)
+	@ar rcs $(NAME) $(OBJ)
 
 clean:
-	$(RM) *.o
+	@$(RM) $(OBJ)
+	@rm -f *.a
+	@echo "clean done!"
 
 fclean: clean
-	$(RM) $(NAME_S)
+	@$(RM) $(NAME)
+	@echo "fclean done!"
 
 re: fclean all
-
-.PHONY: all bonus clean fclean re
+	@echo "rebuild done!"
